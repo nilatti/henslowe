@@ -1,0 +1,5 @@
+class User < ActiveRecord::Base
+  attr_accessible :date_of_birth, :hire_date, :job, :first_name, :last_name, :type
+
+
+end

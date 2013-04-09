@@ -1,0 +1,5 @@
+class Act < ActiveRecord::Base
+  attr_accessible :act_number, :scenes_attributes, :french_scenes_attributes, :play_id
+  belongs_to :play
+  has_many :scenes, :dependent => :destroy
+end

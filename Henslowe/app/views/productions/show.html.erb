@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Start date:</b>
+  <%= @production.start_date %>
+</p>
+
+<p>
+  <b>End date:</b>
+  <%= @production.end_date %>
+</p>
+
+<p>
+  <b>Play:</b>
+  <%= @production.play %>
+</p>
+
+<p>
+  <b>Theater:</b>
+  <%= @production.theater %>
+</p>
+
+
+<%= link_to 'Edit', edit_production_path(@production) %> |
+<%= link_to 'Back', productions_path %>

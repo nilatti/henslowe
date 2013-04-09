@@ -1,0 +1,29 @@
+<h1>Listing productions</h1>
+
+<table>
+  <tr>
+    <th>Start date</th>
+    <th>End date</th>
+    <th>Play</th>
+    <th>Theater</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @productions.each do |production| %>
+  <tr>
+    <td><%= production.start_date %></td>
+    <td><%= production.end_date %></td>
+    <td><%= production.play %></td>
+    <td><%= production.theater %></td>
+    <td><%= link_to 'Show', production %></td>
+    <td><%= link_to 'Edit', edit_production_path(production) %></td>
+    <td><%= link_to 'Destroy', production, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Production', new_production_path %>

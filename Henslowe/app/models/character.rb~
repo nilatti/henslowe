@@ -1,0 +1,4 @@
+class Character < ActiveRecord::Base
+  belongs_to :play
+  attr_accessible :age, :is_female, :name, :play_id
+end

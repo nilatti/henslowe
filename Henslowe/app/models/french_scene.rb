@@ -1,0 +1,59 @@
+class FrenchScene < ActiveRecord::Base
+  attr_accessible :french_scene_number, :play_id, :act_id, :scene_id, :character_ids
+  has_many :on_stages, :dependent => :destroy
+  has_many :characters, :through => :on_stages 
+  belongs_to :scene
+  belongs_to :act
+  belongs_to :play
+  default_scope :order => 'french_scene_number'
+
+  def full_path
+    act = self.act.act_number.to_s
+    scene = self.scene.scene_number.to_s
+    fs = self.french_scene_number.to_s
+    act << '.' << scene << '.' << fs
+  end
+
+  def on_stage
+    characters = Array.new
+    self.characters.each do |c|
+      unless characters.include?(c)
+        characters << c
+      end
+    end
+    characters
+  end
+
+  def all_castings(production)
+    castings = Array.new
+    characters.each do |c|
+      found_castings = Casting.find(:all, :conditions => ["production_id =? and character_id =?", production.id, c.id])
+      found_castings.each do |f|
+        castings << f
+      end
+    end
+    castings
+  end
+
+  def actors_called(production)
+    all_actors = Array.new
+    self.on_stage
+    characters.each do |c|
+      castings = Casting.find(:all, :conditions => ["production_id =? and character_id =?", production.id, c.id])
+      castings.each do |p|
+        all_actors << p.user
+      end
+    end
+    all_actors
+  end
+
+  def can_rehearse?(production, rehearsal)
+    unavailable = Array.new
+    actors_called(production).each do |c|
+      if c.available_for_rehearsal?(rehearsal)
+      else
+        return false
+      end
+    end
+  end
+end

@@ -1,4 +1,28 @@
 Henslowe::Application.routes.draw do
+  resources :productions
+
+
+  resources :theaters
+
+
+  resources :characters
+
+
+  resources :users
+
+
+  resources :french_scenes
+
+
+  resources :scenes
+
+
+  resources :acts
+
+
+  resources :plays
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

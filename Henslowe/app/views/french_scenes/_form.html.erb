@@ -1,0 +1,33 @@
+<%= form_for(@french_scene) do |f| %>
+  <% if @french_scene.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@french_scene.errors.count, "error") %> prohibited this french_scene from being saved:</h2>
+
+      <ul>
+      <% @french_scene.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :number %><br />
+    <%= f.text_field :number %>
+  </div>
+  <div class="field">
+    <%= f.label :play %><br />
+    <%= f.text_field :play %>
+  </div>
+  <div class="field">
+    <%= f.label :act %><br />
+    <%= f.text_field :act %>
+  </div>
+  <div class="field">
+    <%= f.label :scene %><br />
+    <%= f.text_field :scene %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

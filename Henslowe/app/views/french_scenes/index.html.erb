@@ -1,0 +1,29 @@
+<h1>Listing french_scenes</h1>
+
+<table>
+  <tr>
+    <th>Number</th>
+    <th>Play</th>
+    <th>Act</th>
+    <th>Scene</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @french_scenes.each do |french_scene| %>
+  <tr>
+    <td><%= french_scene.number %></td>
+    <td><%= french_scene.play %></td>
+    <td><%= french_scene.act %></td>
+    <td><%= french_scene.scene %></td>
+    <td><%= link_to 'Show', french_scene %></td>
+    <td><%= link_to 'Edit', edit_french_scene_path(french_scene) %></td>
+    <td><%= link_to 'Destroy', french_scene, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New French scene', new_french_scene_path %>

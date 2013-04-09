@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  number: MyString
+  play: 
+  act: 
+  scene: 
+
+two:
+  number: MyString
+  play: 
+  act: 
+  scene: 

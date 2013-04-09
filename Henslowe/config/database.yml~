@@ -14,8 +14,8 @@ development:
   reconnect: false
   database: Henslowe_development
   pool: 5
-  username: hc
-  password: cloud
+  username: root
+  password: To4st3r
   socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -27,8 +27,8 @@ test:
   reconnect: false
   database: Henslowe_test
   pool: 5
-  username: hc
-  password: cloud
+  username: root
+  password: To4st3r
   socket: /var/run/mysqld/mysqld.sock
 
 production:
@@ -37,6 +37,6 @@ production:
   reconnect: false
   database: Henslowe_production
   pool: 5
-  username: hc
-  password: cloud
+  username: root
+  password: To4st3r
   socket: /var/run/mysqld/mysqld.sock
