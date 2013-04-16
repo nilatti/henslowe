@@ -1,15 +1,64 @@
-<p id="notice"><%= notice %></p>
-
+<strong> Scene Chart </strong>
+  <table border = "1">
+    <tr><td></td>
+      <% @play.acts.each do |a| %>
+        <% a.scenes.each do |s| %>
+          <% s.french_scenes.each do |fs| %>
+            <td><%= a.act_number %>.<%= fs.scene.scene_number %>.<%= fs.fs_number %></td>
+          <% end %>
+        <% end %>
+      <% end %>
+    </tr>
+    <% @play.characters.each do |c| %>
+      <tr><td><%= c.name %></td>
+      <% @play.acts.each do |a| %>
+        <% a.scenes.each do |s| %>
+          <% s.french_scenes.each do |fs| %>
+            <td><% if fs.characters.include?(c) %>
+               <%= c.name %>
+            <% end %>
+          <% end %></td>
+        <% end %>
+      <% end %>
+    <% end %></tr>
+  </table>
+</p>
 <p>
-  <b>Title:</b>
-  <%= @play.title %>
+  <strong>Title:</strong>
+  <%=h @play.title %>
+</p>
+<p>
+  <strong>Publication Date:</strong>
+  <%=h @play.date %>
+</p>
+<p>
+<strong>Dramatis Personae</strong>
+<ul>
+<% for char in @play.characters %>
+<li><%= char.name %> <%= link_to 'Show', character_path(char) %> <%= link_to "Edit", edit_character_path(char) %> <%= link_to 'Destroy', char, :confirm => 'Are you sure?', :method => :delete %> </li>
+<% end %>
+</ul>
+<%= link_to 'Add Character', new_play_character_path(@play) %>
+<p>
+  <strong>Acts:</strong><br />
+  <ul>
+  <% for act in @play.acts %>
+    <li><%= act.act_number %> <%= link_to 'Show', act %> <%= link_to "Edit", edit_act_path(act)%> <br /><ul>
+    <% for scene in act.scenes %>
+      <li><%= act.act_number %>.<%= scene.scene_number %> <br /><ul>
+    <% for french_scene in scene.french_scenes %>
+      <li><%= act.act_number %>.<%= scene.scene_number %>.<%= french_scene.fs_number %> <%= link_to 'Edit', edit_french_scene_path(french_scene) %> <%= link_to 'Show', french_scene %></li>
+
+      <% end %></ul>
+    <% end %></ul>
+  <% end %></ul>
 </p>
 
+
+
+
 <p>
-  <b>Date:</b>
-  <%= @play.date %>
+  <%= link_to "Edit", edit_play_path(@play) %> |
+  <%= link_to "Destroy", @play, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", plays_path %>
 </p>
-
-
-<%= link_to 'Edit', edit_play_path(@play) %> |
-<%= link_to 'Back', plays_path %>

@@ -10,4 +10,5 @@ class Play < ActiveRecord::Base
 
 attr_accessible :title, :date, :number_of_acts, :acts_attributes, :characters_attributes, :scenes_attributes
   attr_accessor :number_of_acts
-endend
+end
+

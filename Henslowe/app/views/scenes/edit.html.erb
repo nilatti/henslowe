@@ -1,6 +1,8 @@
-<h1>Editing scene</h1>
+<% title "Edit Scene" %>
 
-<%= render 'form' %>
+<%= render :partial => 'form' %>
 
-<%= link_to 'Show', @scene %> |
-<%= link_to 'Back', scenes_path %>
+<p>
+  <%= link_to "Show", @scene %> |
+  <%= link_to "View All", scenes_path %>
+</p>

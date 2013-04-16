@@ -1,29 +1,17 @@
-<h1>Listing characters</h1>
-
 <table>
   <tr>
     <th>Name</th>
-    <th>Is female</th>
-    <th>Age</th>
     <th>Play</th>
-    <th></th>
-    <th></th>
-    <th></th>
   </tr>
-
-<% @characters.each do |character| %>
-  <tr>
-    <td><%= character.name %></td>
-    <td><%= character.is_female %></td>
-    <td><%= character.age %></td>
-    <td><%= character.play %></td>
-    <td><%= link_to 'Show', character %></td>
-    <td><%= link_to 'Edit', edit_character_path(character) %></td>
-    <td><%= link_to 'Destroy', character, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <% for character in @characters %>
+    <tr>
+      <td><%=h character.name %></td>
+      <td><%=h character.play.title %></td>
+      <td><%= link_to "Show", character %></td>
+      <td><%= link_to "Edit", edit_character_path(character) %></td>
+      <td><%= link_to "Destroy", character, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Character', new_character_path %>
+<p><%= link_to "New Character", new_character_path %></p>

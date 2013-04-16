@@ -1,25 +1,10 @@
-<%= form_for(@play) do |f| %>
-  <% if @play.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@play.errors.count, "error") %> prohibited this play from being saved:</h2>
-
-      <ul>
-      <% @play.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :date %><br />
-    <%= f.date_select :date %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= semantic_nested_form_for @play do |f| %>
+  <%#= f.input :author_id, :as => :select, :collection => Author.all %><br />
+  <%= f.input :title %>
+  <%= f.input :publication_date %>
+  <%= f.input :genres, :as => :check_boxes, :collection => Genre.all %>
+  <%= f.input :summary %>
+  <%= f.fields_for :acts %>
+  <%= f.link_to_add "Add an act", :acts %>
+<%= f.buttons %>
 <% end %>

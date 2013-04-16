@@ -1,29 +1,12 @@
-<%= form_for(@scene) do |f| %>
-  <% if @scene.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@scene.errors.count, "error") %> prohibited this scene from being saved:</h2>
-
-      <ul>
-      <% @scene.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
+<%= form_for @scene do |f| %>
+  <%= f.error_messages %>
+  <p>
     <%= f.label :number %><br />
-    <%= f.number_field :number %>
-  </div>
-  <div class="field">
-    <%= f.label :play %><br />
-    <%= f.text_field :play %>
-  </div>
-  <div class="field">
-    <%= f.label :act %><br />
-    <%= f.text_field :act %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.text_field :number %>
+  </p>
+  <p>
+    <%= f.label :summary %><br />
+    <%= f.text_area :summary %>
+  </p>
+  <p><%= f.submit %></p>
 <% end %>

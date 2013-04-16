@@ -21,6 +21,11 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'nested_has_many_through'
+gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git'
+gem 'formtastic', :git => 'git://github.com/justinfrench/formtastic.git'
+gem "nifty-generators", :group => :development
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

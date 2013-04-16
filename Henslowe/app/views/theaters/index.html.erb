@@ -1,35 +1,30 @@
-<h1>Listing theaters</h1>
+<% title "Theaters" %>
 
 <table>
   <tr>
     <th>Name</th>
-    <th>Street address</th>
+    <th>Street Address</th>
     <th>State</th>
     <th>Zip</th>
-    <th>Mission statement</th>
-    <th></th>
-    <th>Website</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>History</th>
+    <th>Phone Number</th>
+    <th>Web Site</th>
+    <th>Mission Statement</th>
   </tr>
-
-<% @theaters.each do |theater| %>
-  <tr>
-    <td><%= theater.name %></td>
-    <td><%= theater.street_address %></td>
-    <td><%= theater.state %></td>
-    <td><%= theater.zip %></td>
-    <td><%= theater.mission_statement %></td>
-    <td><%= theater. %></td>
-    <td><%= theater.website %></td>
-    <td><%= link_to 'Show', theater %></td>
-    <td><%= link_to 'Edit', edit_theater_path(theater) %></td>
-    <td><%= link_to 'Destroy', theater, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <% for theater in @theaters %>
+    <tr>
+      <td><%=h theater.name %></td>
+      <td><%=h theater.street_address %></td>
+      <td><%=h theater.state %></td>
+      <td><%=h theater.zip %></td>
+      <td><%=h theater.phone_number %></td>
+      <td><%=h theater.website %></td>
+      <td><%=h theater.mission_statement %></td>
+      <td><%= link_to "Show", theater %></td>
+      <td><%= link_to "Edit", edit_theater_path(theater) %></td>
+      <td><%= link_to "Destroy", theater, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Theater', new_theater_path %>
+<p><%= link_to "New Theater", new_theater_path %></p>

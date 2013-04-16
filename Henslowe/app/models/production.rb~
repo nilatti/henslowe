@@ -7,11 +7,11 @@ class Production < ActiveRecord::Base
 
   has_many :actors, :through => :castings
   has_many :characters, :through => :play
-  attr_accessible :end_date, :start_date, :play_id, :theater_id, :castings_attributes
+  attr_accessible :end_date, :start_date, :play_id, :theater_id, :castings_attributes, :actor_id
 
   def users_in_production
     actors = Array.new
-    castings = Casting.find(:all, :conditions => [ 'production_id = ? AND user_id IS NOT NULL', self.id ])
+    castings = Casting.find(:all, :conditions => [ 'production_id = ? AND actor_id IS NOT NULL', self.id ])
     castings.each do |c|
       unless actors.include?(c.user)
         actors << c.user

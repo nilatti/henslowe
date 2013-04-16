@@ -1,25 +1,20 @@
-<h1>Listing plays</h1>
-
 <table>
   <tr>
     <th>Title</th>
-    <th>Date</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Author</th>
+    <th>Publication Date</th>
+    <th>Genre</th>
+    <th>Summary</th>
   </tr>
-
-<% @plays.each do |play| %>
-  <tr>
-    <td><%= play.title %></td>
-    <td><%= play.date %></td>
-    <td><%= link_to 'Show', play %></td>
-    <td><%= link_to 'Edit', edit_play_path(play) %></td>
-    <td><%= link_to 'Destroy', play, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <% for play in @plays %>
+    <tr>
+      <td><%=h play.title %></td>
+      <td></td>
+      <td><%= link_to "Show", play %></td>
+      <td><%= link_to "Edit", edit_play_path(play) %></td>
+      <td><%= link_to "Destroy", play, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Play', new_play_path %>
+<p><%= link_to "New Play", new_play_path %></p>

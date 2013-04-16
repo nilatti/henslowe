@@ -1,9 +1,14 @@
 Henslowe::Application.routes.draw do
+
+  resources :theaters do |theater|
+    resources :productions
+  end
+
+  resources :plays do |play|
+    resources :characters, :acts, :scenes
+  end
+
   resources :productions
-
-
-  resources :theaters
-
 
   resources :characters
 
@@ -20,7 +25,6 @@ Henslowe::Application.routes.draw do
   resources :acts
 
 
-  resources :plays
 
 
   # The priority is based upon order of creation:

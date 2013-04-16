@@ -1,30 +1,36 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>Name:</b>
-  <%= @user.name %>
+  <%=h @user.first_name %> <%=h @user.last_name %>
 </p>
 
 <p>
-  <b>Date of birth:</b>
-  <%= @user.date_of_birth %>
+  <b>Bio:</b>
+  <%=h @user.bio %>
 </p>
+<p>
+<b>DOB:</b>
+<%= @user.birthdate %>
 
 <p>
-  <b>Job:</b>
-  <%= @user.job %>
+  <b>Current roles:</b><br />
+  <% for p in @user.productions.uniq do %>
+    <i><%= p.play.title %></i> <%= p.theater.name %> <%= p.date.year %>
+      <ul>
+    <% for casting in p.castings %>
+      <% if casting.user_id == @user.id %>
+       <li><%= casting.character.name %></li>
+      <% end %>
+    <% end %>
+      </ul>
+  <% end %>
 </p>
 
-<p>
-  <b>Hire date:</b>
-  <%= @user.hire_date %>
-</p>
+  <b>Measurements</b><br />
+  <ul>
+    <% for m in @user.measurements do %>
+    <li><%= m.date %> <%= link_to 'Show', m %> <%= link_to 'Edit', edit_measurement_path(m) %> <%= link_to 'Destroy', m, :confirm => 'Are you sure?', :method => :delete %></li>
+    <% end %>
+   </ul>
+  <%= link_to 'New Measurement Sheet', new_user_measurement_path(@user) %><br />
 
-<p>
-  <b>Type:</b>
-  <%= @user.type %>
-</p>
-
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

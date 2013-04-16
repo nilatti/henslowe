@@ -1,27 +1,19 @@
-<h1>Listing scenes</h1>
+<% title "Scenes" %>
 
 <table>
   <tr>
     <th>Number</th>
-    <th>Play</th>
-    <th>Act</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Summary</th>
   </tr>
-
-<% @scenes.each do |scene| %>
-  <tr>
-    <td><%= scene.number %></td>
-    <td><%= scene.play %></td>
-    <td><%= scene.act %></td>
-    <td><%= link_to 'Show', scene %></td>
-    <td><%= link_to 'Edit', edit_scene_path(scene) %></td>
-    <td><%= link_to 'Destroy', scene, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <% for scene in @scenes %>
+    <tr>
+      <td><%=h scene.number %></td>
+      <td><%=h scene.summary %></td>
+      <td><%= link_to "Show", scene %></td>
+      <td><%= link_to "Edit", edit_scene_path(scene) %></td>
+      <td><%= link_to "Destroy", scene, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Scene', new_scene_path %>
+<p><%= link_to "New Scene", new_scene_path %></p>

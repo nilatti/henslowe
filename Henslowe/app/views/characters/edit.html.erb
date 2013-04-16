@@ -1,6 +1,8 @@
-<h1>Editing character</h1>
+<% title "Edit Character" %>
 
-<%= render 'form' %>
+<%= render :partial => 'form' %>
 
-<%= link_to 'Show', @character %> |
-<%= link_to 'Back', characters_path %>
+<p>
+  <%= link_to "Show", @character %> |
+  <%= link_to "View All", characters_path %>
+</p>

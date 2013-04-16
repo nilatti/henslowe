@@ -1,25 +1,51 @@
-<p id="notice"><%= notice %></p>
-
+<% title @production.play.title %>
 <p>
-  <b>Start date:</b>
-  <%= @production.start_date %>
+  <%= link_to "#{@production.play.title}", @production.play %><br />
+  <strong>Date:</strong>
+  <%=h @production.start_date %> - <%=h @production.end_date %><br />
+  <%=h @production.theater.name %>
 </p>
-
 <p>
-  <b>End date:</b>
-  <%= @production.end_date %>
-</p>
-
 <p>
-  <b>Play:</b>
-  <%= @production.play %>
+  <strong>Casting:</strong><br />
+  <table border="1">
+  <tr><td>Actor</td><td>Characters</td></tr>
+<% for au in @production.actors.uniq %>
+  <tr><td valign="top"><%= au.name %></td><td><% au.castings.each do |c| %><% if c.production_id == @production.id %><%= c.character.name %><br /><% end %></td></tr>
+  <% end %>
+</table>
+
+<p><strong>Doubling</strong>
+<table border = "1">
+    <tr><td></td>
+    <% @production.play.acts.each do |a| %>
+       <% a.scenes.each do |s| %>
+          <% s.french_scenes.each do |fs| %>
+            <td><%= a.act_number %>.<%= s.scene_number %>.<%= fs.french_scene_number %></td>
+          <% end %>
+        <% end %>
+      <% end %>
+    </tr>
+    <% @production.actors.uniq.each do |au| %>
+      <tr><td><%= au.name %><% au.doubling_problems(@production) %></td>
+      <% @production.play.acts.each do |a| %>
+        <% a.scenes.each do |s| %>
+          <% s.french_scenes.each do |fs| %>
+            <% if au.doubling_problems(@production).include?(fs) %><td bgcolor = "red"><% else %><td><% end %>
+              <% au.characters.each do |c| %>
+                <% if fs.characters.include?(c) %>
+                  <%= c.name %>
+                <% end %>
+              <% end %>
+            </td>
+          <% end %>
+        <% end %>
+      <% end %></tr>
+    <% end %>
+  </table>
+<% end %>
 </p>
-
-<p>
-  <b>Theater:</b>
-  <%= @production.theater %>
+  <%= link_to "Edit", edit_production_path(@production) %> |
+  <%= link_to "Destroy", @production, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", productions_path %>
 </p>
-
-
-<%= link_to 'Edit', edit_production_path(@production) %> |
-<%= link_to 'Back', productions_path %>

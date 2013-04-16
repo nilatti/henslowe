@@ -1,6 +1,17 @@
-<h1>Editing production</h1>
+<%= title "Edit Production" %>
 
-<%= render 'form' %>
+<%= semantic_form_for @production do |f| %>
+  <%= f.inputs %>
+    <p>Castings<br />
+    <% @production.castings.each do |casting| %>
+      <%= f.semantic_fields_for :castings, casting do |c| %>
+        <%= c.input :user, :label => casting.character.name %>
+      <% end %>
+    <% end %> 
+  <p><%= f.buttons %></p>
+<% end %>
+<p>
+  <%= link_to "Show", @production %> |
+  <%= link_to "View All", productions_path %>
+</p>
 
-<%= link_to 'Show', @production %> |
-<%= link_to 'Back', productions_path %>

@@ -1,20 +1,27 @@
-<p id="notice"><%= notice %></p>
+<% title "Act #{@scene.act.act_number}, Scene #{@scene.scene_number}" %>
 
 <p>
-  <b>Number:</b>
-  <%= @scene.number %>
+  <strong>Summary:</strong>
+  <%=h @scene.scene_summary %>
+</p>
+<p>
+  <strong>Characters:</strong><br />
+  <% c = @scene.on_stage %>
+  <ul> 
+  <% c.each do |char| %>
+    <li><%= char.name %></li>
+  <% end %>
+  </ul>
+</p>
+<p>
+  <strong>French Scenes:</strong><br />
+  <ul>
+  <% for fs in @scene.french_scenes do %>
+    <li><%= fs.fs_number %> <%= link_to 'Show', fs %></li>
+  <% end %>
+  </ul>
 </p>
 
 <p>
-  <b>Play:</b>
-  <%= @scene.play %>
+  <%= link_to "View Act #{@scene.act.act_number}", act_path(@scene.act.id) %>
 </p>
-
-<p>
-  <b>Act:</b>
-  <%= @scene.act %>
-</p>
-
-
-<%= link_to 'Edit', edit_scene_path(@scene) %> |
-<%= link_to 'Back', scenes_path %>

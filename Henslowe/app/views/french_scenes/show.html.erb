@@ -1,25 +1,17 @@
-<p id="notice"><%= notice %></p>
+<% title "French Scene" %>
 
 <p>
-  <b>Number:</b>
-  <%= @french_scene.number %>
+  <strong>Number:</strong>
+  <%= @french_scene.act.act_number %>.<%= @french_scene.scene.scene_number %>.<%= @french_scene.fs_number %><br />
 </p>
-
+  <strong>Characters:</strong>
+  <ul>
+  <% @french_scene.characters.each do |c| %>
+    <li><%= c.name %></li>
+  <% end %>
+  </ul>
 <p>
-  <b>Play:</b>
-  <%= @french_scene.play %>
+  <%= link_to "Edit", edit_french_scene_path(@french_scene) %> |
+  <%= link_to "Destroy", @french_scene, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", french_scenes_path %>
 </p>
-
-<p>
-  <b>Act:</b>
-  <%= @french_scene.act %>
-</p>
-
-<p>
-  <b>Scene:</b>
-  <%= @french_scene.scene %>
-</p>
-
-
-<%= link_to 'Edit', edit_french_scene_path(@french_scene) %> |
-<%= link_to 'Back', french_scenes_path %>

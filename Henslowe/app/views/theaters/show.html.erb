@@ -1,40 +1,37 @@
-<p id="notice"><%= notice %></p>
+<% title "Theater" %>
 
 <p>
-  <b>Name:</b>
-  <%= @theater.name %>
+  <strong>Name:</strong>
+  <%=h @theater.name %>
+</p>
+<p>
+  <strong>Street Address:</strong>
+  <%=h @theater.street_address %>
+</p>
+<p>
+  <strong>State:</strong>
+  <%=h @theater.state %>
+</p>
+<p>
+  <strong>Zip:</strong>
+  <%=h @theater.zip %>
+</p>
+<p>
+  <strong>Phone Number:</strong>
+  <%=h @theater.phone_number %>
+</p>
+<p>
+  <strong>Web Site:</strong>
+  <%=h @theater.website %>
+</p>
+<p>
+  <strong>Mission Statement:</strong>
+  <%=h @theater.mission_statement %>
 </p>
 
 <p>
-  <b>Street address:</b>
-  <%= @theater.street_address %>
+  <%= link_to "Make new production", new_theater_production_path(@theater) %> | 
+  <%= link_to "Edit", edit_theater_path(@theater) %> |
+  <%= link_to "Destroy", @theater, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", theaters_path %>
 </p>
-
-<p>
-  <b>State:</b>
-  <%= @theater.state %>
-</p>
-
-<p>
-  <b>Zip:</b>
-  <%= @theater.zip %>
-</p>
-
-<p>
-  <b>Mission statement:</b>
-  <%= @theater.mission_statement %>
-</p>
-
-<p>
-  <b>:</b>
-  <%= @theater. %>
-</p>
-
-<p>
-  <b>Website:</b>
-  <%= @theater.website %>
-</p>
-
-
-<%= link_to 'Edit', edit_theater_path(@theater) %> |
-<%= link_to 'Back', theaters_path %>

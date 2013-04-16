@@ -1,25 +1,15 @@
-<p id="notice"><%= notice %></p>
+<% title "Character" %>
 
 <p>
-  <b>Name:</b>
-  <%= @character.name %>
+  <strong>Name:</strong>
+  <%=h @character.name %>
+</p>
+<p>
+  <strong>Play:</strong>
+  <%=h link_to @character.play.title, play_path(@character.play) %>
 </p>
 
 <p>
-  <b>Is female:</b>
-  <%= @character.is_female %>
+  <%= link_to "Edit", edit_character_path(@character) %> |
+  <%= link_to "Destroy", @character, :confirm => 'Are you sure?', :method => :delete %> |
 </p>
-
-<p>
-  <b>Age:</b>
-  <%= @character.age %>
-</p>
-
-<p>
-  <b>Play:</b>
-  <%= @character.play %>
-</p>
-
-
-<%= link_to 'Edit', edit_character_path(@character) %> |
-<%= link_to 'Back', characters_path %>

@@ -1,6 +1,12 @@
-<h1>Editing act</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @act %> |
-<%= link_to 'Back', acts_path %>
+Edit <i><%= @act.play.title %></i> Act <%= @act.act_number %>
+<%= semantic_nested_form_for @act do |f| %>
+<%= f.inputs do %>
+  <%= f.input :act_number %>
+<div id="edit_scene">
+</p>
+  <%= f.fields_for :scenes %>
+  <% end %>
+  <%= f.link_to_add "Add a scene", :scenes %>
+</div>
+<%= f.actions %>
+<% end %>
