@@ -1,0 +1,13 @@
+Edit <i><%= @act.play.title %></i> Act <%= @act.act_number %>
+<%= semantic_nested_form_for @act do |f| %>
+<%= f.inputs do %>
+  <%= f.input :act_number %>
+  <%= f.input :act_summary, :input_html => { :rows => 2 } %>
+<div id="edit_scene">
+</p>
+  <%= f.fields_for :scenes %>
+  <% end %>
+  <%= f.link_to_add "Add a scene", :scenes %>
+</div>
+<%= f.actions %>
+<% end %>

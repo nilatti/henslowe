@@ -1,0 +1,16 @@
+<p>
+  <b>Name:</b>
+  <%=h @actor.name %>
+</p>
+
+<p>
+  <b>Job:</b>
+  <%=h @actor.job %>
+</p>
+<p>
+<b>DOB:</b>
+<%= @actor.date_of_birth %>
+
+<br />
+
+<%= link_to 'Back', actors_path %>

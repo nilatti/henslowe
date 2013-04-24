@@ -1,0 +1,26 @@
+<% title @production.play.title %>
+<p>
+  <%= link_to "#{@production.play.title}", @production.play %><br />
+  <strong>Date:</strong>
+  <%=h @production.start_date %> - <%=h @production.end_date %><br />
+
+</p>
+<p>
+<p>
+  <strong>Casting:</strong><br />
+    <table border="1">
+    <tr><td>Character</td><td>Actor</td></tr>
+      <% for casting in @production.castings %>
+        <tr><td valign="top"><%= casting.character.name %></td>
+        <td><% unless casting.actor.nil? %>
+          <%= casting.actor.first_name %>
+        <% end %>
+      <% end %>
+
+</table>
+
+</p>
+  <%= link_to "Edit", edit_production_path(@production) %> |
+  <%= link_to "Destroy", @production, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", productions_path %>
+</p>

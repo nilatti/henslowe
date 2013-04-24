@@ -1,0 +1,11 @@
+<%= semantic_nested_form_for @play do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :title %>
+    <%= f.input :date, :start_year => 1300 %>
+  <%= f.input :number_of_acts %>
+  <% end %>
+  
+
+  <%= f.buttons %>
+<% end %>
+<p><%= link_to "Back to List", plays_path %></p>

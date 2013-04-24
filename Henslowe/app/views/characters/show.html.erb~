@@ -1,0 +1,15 @@
+<% title "Character" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @character.name %>
+</p>
+<p>
+  <strong>Play:</strong>
+  <%=h link_to @character.play.title, play_path(@character.play) %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_character_path(@character) %> |
+  <%= link_to "Destroy", @character, :confirm => 'Are you sure?', :method => :delete %> |
+</p>

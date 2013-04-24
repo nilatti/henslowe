@@ -1,0 +1,9 @@
+<p class="fields">
+<%= f.input :act_number %>
+<%= f.input :act_summary, :input_html => { :rows => 2 } %>
+<div id="edit_scene">
+</p>
+  <%= f.fields_for :scenes %>
+  <%= f.link_to_add "Add a scene", :scenes %>
+  </div>
+  <%= f.link_to_remove "Remove Act" %><br /> 

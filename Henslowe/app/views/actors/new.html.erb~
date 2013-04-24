@@ -1,0 +1,2 @@
+<% title "new actor" %>
+<%= render :partial => 'form' %>

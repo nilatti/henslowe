@@ -1,0 +1,18 @@
+<%= title "Edit Production" %>
+
+<%= semantic_form_for @production do |f| %>
+  <%= f.inputs %>
+    <p>Castings<br />
+      <% @production.castings.each do |casting| %>
+        <%= f.semantic_fields_for :castings, casting do |c| %>
+          <%= c.input :actor, :label => casting.character.name %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <p><%= f.actions %></p>
+<% end %>
+<p>
+  <%= link_to "Show", @production %> |
+  <%= link_to "View All", productions_path %>
+</p>
+
