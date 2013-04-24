@@ -7,8 +7,34 @@ class Play < ActiveRecord::Base
   has_many :french_scenes, :through => :scenes
   has_many :characters
   accepts_nested_attributes_for :characters, :allow_destroy => true
-
 attr_accessible :title, :date, :number_of_acts, :acts_attributes, :characters_attributes, :scenes_attributes
   attr_accessor :number_of_acts
+  
+  def total_characters
+  #determines number of characters in play
+    self.characters.size
+  end
+  
+  def total_male_characters
+  #determines number of male characters in play
+    men = 0
+    self.characters.each do |c|
+      unless c.is_female?
+        men+=1
+      end
+    end
+    return men
+  end
+ 
+  def total_female_characters
+  #determines number of female characters in play
+    women = 0
+    self.characters.each do |c|
+      if c.is_female?
+        women+=1
+      end
+    end
+    return women
+  end
 end
 

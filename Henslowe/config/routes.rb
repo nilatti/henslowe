@@ -1,19 +1,24 @@
 Henslowe::Application.routes.draw do
-
+  resources :productions
+  
   resources :theaters do |theater|
     resources :productions
   end
+
+  resources :characters
+
 
   resources :plays do |play|
     resources :characters, :acts, :scenes
   end
 
-  resources :productions
+  
 
-  resources :characters
-
+  
 
   resources :users
+
+  resources :actors
 
 
   resources :french_scenes

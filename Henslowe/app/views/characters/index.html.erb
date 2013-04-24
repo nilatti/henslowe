@@ -1,3 +1,8 @@
+<% title @play.title %>
+Number of characters: <%= @play.total_characters %><br />
+Male: <%= @play.total_male_characters %><br />
+Female: <%= @play.total_female_characters %><br />
+
 <table>
   <tr>
     <th>Name</th>
@@ -6,12 +11,12 @@
   <% for character in @characters %>
     <tr>
       <td><%=h character.name %></td>
-      <td><%=h character.play.title %></td>
-      <td><%= link_to "Show", character %></td>
-      <td><%= link_to "Edit", edit_character_path(character) %></td>
-      <td><%= link_to "Destroy", character, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%if (character.is_female?) %>Female<% else %>Male<% end %></td>
+      <td><%= link_to "Show", play_character_path(@play, character) %></td>
+      <td><%= link_to "Edit", edit_play_character_path(@play, character) %></td>
+      <td><%= link_to "Destroy", [@play, character], :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>
 
-<p><%= link_to "New Character", new_character_path %></p>
+<p><%= link_to "New Character", new_play_character_path(@play) %></p>

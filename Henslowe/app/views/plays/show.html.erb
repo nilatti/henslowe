@@ -4,7 +4,7 @@
       <% @play.acts.each do |a| %>
         <% a.scenes.each do |s| %>
           <% s.french_scenes.each do |fs| %>
-            <td><%= a.act_number %>.<%= fs.scene.scene_number %>.<%= fs.fs_number %></td>
+            <td><%= a.act_number %>.<%= fs.scene.scene_number %>.<%= fs.french_scene_number %></td>
           <% end %>
         <% end %>
       <% end %>
@@ -47,7 +47,7 @@
     <% for scene in act.scenes %>
       <li><%= act.act_number %>.<%= scene.scene_number %> <br /><ul>
     <% for french_scene in scene.french_scenes %>
-      <li><%= act.act_number %>.<%= scene.scene_number %>.<%= french_scene.fs_number %> <%= link_to 'Edit', edit_french_scene_path(french_scene) %> <%= link_to 'Show', french_scene %></li>
+      <li><%= act.act_number %>.<%= scene.scene_number %>.<%= french_scene.french_scene_number %> <%= link_to 'Edit', edit_french_scene_path(french_scene) %> <%= link_to 'Show', french_scene %></li>
 
       <% end %></ul>
     <% end %></ul>

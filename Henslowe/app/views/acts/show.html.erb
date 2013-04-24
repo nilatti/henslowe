@@ -4,7 +4,7 @@
     <tr><td></td>
         <% @act.scenes.each do |s| %>
           <% s.french_scenes.each do |fs| %>
-            <td><%= @act.act_number %>.<%= fs.scene.scene_number %>.<%= fs.fs_number %></td>
+            <td><%= @act.act_number %>.<%= fs.scene.scene_number %>.<%= fs.french_scene_number %></td>
           <% end %>
         <% end %>
     </tr>
@@ -36,7 +36,7 @@
   <ul>
   <% for scene in @act.scenes do %>
     <li><%= @act.act_number %>.<%= scene.scene_number %> <%= link_to 'Show', scene %> <%= link_to 'Edit', edit_scene_path(scene) %>
-<%= link_to 'Destroy', scene, :confirm => 'Are you sure?', :method => :delete %><br /><ul><% for french_scene in scene.french_scenes %><li><%= @act.act_number %>.<%=scene.scene_number %>.<%= french_scene.fs_number %> <%= link_to 'Edit', edit_french_scene_path(french_scene) %> <%= link_to 'Show', french_scene %> <%= link_to 'Destroy', french_scene, :confirm => 'Are you sure?', :method => :delete %> </li><% end %></ul></li>
+<%= link_to 'Destroy', scene, :confirm => 'Are you sure?', :method => :delete %><br /><ul><% for french_scene in scene.french_scenes %><li><%= @act.act_number %>.<%=scene.scene_number %>.<%= french_scene.french_scene_number %> <%= link_to 'Edit', edit_french_scene_path(french_scene) %> <%= link_to 'Show', french_scene %> <%= link_to 'Destroy', french_scene, :confirm => 'Are you sure?', :method => :delete %> </li><% end %></ul></li>
   <% end %>
   </ul>
 </p>

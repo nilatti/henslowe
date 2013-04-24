@@ -3,6 +3,6 @@
 <%= render :partial => 'form' %>
 
 <p>
-  <%= link_to "Show", @character %> |
-  <%= link_to "View All", characters_path %>
+  <%= link_to "Show", play_character_path(@play, @character) %> |
+  <%= link_to "Back", play_characters_path(@play) %>
 </p>
