@@ -1,6 +1,7 @@
 class ScenesController < ApplicationController
+  before_filter :load_act
   def index
-    @scenes = Scene.all
+    @scenes = @act.scenes.all
   end
   
   def show
@@ -8,38 +9,42 @@ class ScenesController < ApplicationController
   end
   
   def new
-    @scene = Scene.new
+    @scene = @act.scenes.new
   end
   
   def create
-    @scene = Scene.new(params[:scene])
+    @scene = @act.scenes.new(params[:scene])
     if @scene.save
       flash[:notice] = "Successfully created scene."
-      redirect_to @scene
+      redirect_to [@act, @scene]
     else
       render :action => 'new'
     end
   end
   
   def edit
-    @scene = Scene.find(params[:id])
+    @scene = @act.scenes.find(params[:id])
   end
   
   def update
-    @scene = Scene.find(params[:id])
+    @scene = @act.scenes.find(params[:id])
     if @scene.update_attributes(params[:scene])
       flash[:notice] = "Successfully updated scene."
-      redirect_to @scene
+      redirect_to [@act, @scene]
     else
       render :action => 'edit'
     end
   end
   
   def destroy
-    @scene = Scene.find(params[:id])
-    @act = @scene.act
+    @scene = @act.scenes.find(params[:id])
     @scene.destroy
     flash[:notice] = "Successfully destroyed scene."
-    redirect_to act_path(@act)
+    redirect_to act_scenes_path(@act)
+  end
+  private
+ 
+  def load_act
+    @act = Act.find(params[:act_id])
   end
 end

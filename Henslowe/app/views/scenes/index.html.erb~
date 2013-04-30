@@ -1,4 +1,4 @@
-<% title "#{@scene.play.title} Act #{@scene.act.act_number} Scenes" %>
+<% title "Scenes" %>
 
 <table>
   <tr>
@@ -14,4 +14,4 @@
   <% end %>
 </table>
 
-<p><%= link_to "New Scene", new_act_scene_path(@act) %></p>
+<p><%= link_to "New Scene", new_scene_path %></p>

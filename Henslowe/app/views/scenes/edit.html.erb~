@@ -1,4 +1,4 @@
-<% title "Edit Scene #{@scene.scene_number}" %>
+<% title "Edit Scene" %>
 
 <%= render :partial => 'form' %>
 

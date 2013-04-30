@@ -20,4 +20,4 @@
 
 <br />
 
-<%= link_to 'New French scene', new_scene_french_scene_path(@scene) %> | <%= link_to "Back to Act #{@scene.act.act_number}", play_act_path(@scene.play, @scene.act) %> | <%= link_to "Back to #{@scene.play.title}", play_path(@scene.play) %>
+<%= link_to 'New French scene', new_scene_french_scene_path(@scene) %> | <%= link_to "Back to Act #{@scene.act.act_number}", play_act_path(@scene.play, @scene.act) %> | <%= link_to "Back to #{@scene.play.title}", play_path(@scene.play)

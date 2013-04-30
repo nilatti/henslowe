@@ -3,6 +3,6 @@
 <%= render :partial => 'form' %>
 
 <p>
-  <%= link_to "Show", @french_scene %> |
-  <%= link_to "View All", french_scenes_path %>
+  <%= link_to "Show", scene_french_scene_path(@scene, @french_scene) %> |
+  <%= link_to "View All", scene_french_scenes_path(@scene) %>
 </p>

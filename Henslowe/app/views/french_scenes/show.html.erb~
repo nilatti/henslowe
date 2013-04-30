@@ -1,4 +1,4 @@
-<% title "#{@french_scene.play.title} Act #{@french_scene.act.act_number}, Scene #{@french_scene.scene.scene_number}.#{@french_scene.french_scene_number}" %>
+<% title "#{@french_scene.play.title} Act #{@french_scene.act.act_number}, Scene #{@french_scene.scene.scene_number}.<#{@french_scene.french_scene_number}" %>
 
 <p>
   <strong>Number:</strong>

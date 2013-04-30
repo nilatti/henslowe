@@ -19,5 +19,5 @@
 </p>
 
 <p>
-  <%= link_to "View Act #{@scene.act.act_number}", play_act_path(@scene.play, @scene.act) %>
+  <%= link_to "View Act #{@scene.act.act_number}", play_act_path(scene.play, scene.act) %>
 </p>
