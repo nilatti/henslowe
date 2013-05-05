@@ -1,0 +1,20 @@
+.fields {
+  margin-left: 15px;
+}
+
+.formtastic ul,
+.formtastic ol
+{
+  list-style-type: none;
+}
+
+.formtastic .stringish input {
+  width: 25%;
+}
+
+.formtastic .stringish input[size],
+.formtastic .stringish input[max] {
+  width:auto;
+  max-width:25%;
+}
+
