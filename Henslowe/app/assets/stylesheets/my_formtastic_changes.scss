@@ -1,20 +1,29 @@
-.fields {
-  margin-left: 15px;
-}
-
-.formtastic ul,
-.formtastic ol
-{
-  list-style-type: none;
-}
-
 .formtastic .stringish input {
-  width: 25%;
+  width: 25% !important;
 }
 
-.formtastic .stringish input[size],
-.formtastic .stringish input[max] {
-  width:auto;
-  max-width:25%;
+.fields{
+  margin:15px
 }
+
+.acts {
+  background: #E0E0E0;
+}
+
+.scenes {
+  background: #B8B8B8;
+}
+
+.french_scenes {
+  background: #909090;
+}
+
+.remove_nested_fields {
+  color: red
+}
+
+.add_nested_fields {
+  color: blue
+}
+
 
