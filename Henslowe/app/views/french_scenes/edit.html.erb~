@@ -1,8 +1,0 @@
-<% title "Edit French Scene" %>
-
-<%= render :partial => 'form' %>
-
-<p>
-  <%= link_to "Show", @french_scene %> |
-  <%= link_to "View All", french_scenes_path %>
-</p>

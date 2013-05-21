@@ -1,5 +1,0 @@
-<h1>New french_scene</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', french_scenes_path %>

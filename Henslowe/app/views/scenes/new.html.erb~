@@ -1,5 +1,0 @@
-<% title "New Scene" %>
-
-<%= render :partial => 'form' %>
-
-<p><%= link_to "Back to List", scenes_path %></p>
