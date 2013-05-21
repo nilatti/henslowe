@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130409152234) do
+ActiveRecord::Schema.define(:version => 20130521180228) do
 
   create_table "acts", :force => true do |t|
     t.integer  "act_number"
@@ -98,6 +98,17 @@ ActiveRecord::Schema.define(:version => 20130409152234) do
   add_index "scenes", ["act_id"], :name => "index_scenes_on_act_id"
   add_index "scenes", ["play_id"], :name => "index_scenes_on_play_id"
 
+  create_table "spaces", :force => true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.integer  "seating_capacity"
+    t.integer  "theater_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "spaces", ["theater_id"], :name => "index_spaces_on_theater_id"
+
   create_table "theaters", :force => true do |t|
     t.string   "name"
     t.string   "street_address"
@@ -108,6 +119,7 @@ ActiveRecord::Schema.define(:version => 20130409152234) do
     t.string   "website"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "city"
   end
 
   create_table "users", :force => true do |t|
@@ -120,6 +132,7 @@ ActiveRecord::Schema.define(:version => 20130409152234) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "best_role"
+    t.boolean  "is_female"
   end
 
 end

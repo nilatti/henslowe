@@ -1,0 +1,5 @@
+<p class="fields">
+<%= f.input :french_scene_number, :required => true, :hint => "French scenes usually are letters (a, b, c)" %><%= f.link_to_remove "Remove French Scene" %>
+<%= f.input :characters, :as => :check_boxes, :collection => @play.characters.all %>
+</p>
+<hr>

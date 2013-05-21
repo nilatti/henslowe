@@ -1,0 +1,6 @@
+<% title "New Act" %>
+<h1>New act</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', play_acts_path(@play) %>

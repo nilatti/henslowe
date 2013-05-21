@@ -1,0 +1,21 @@
+.formtastic .stringish input {
+  width: 25% !important;
+}
+
+.fields{
+  margin:15px
+}
+
+.acts {
+  background: #E0E0E0;
+}
+
+.remove_nested_fields {
+  color: red
+}
+
+.add_nested_fields {
+  color: blue
+}
+
+

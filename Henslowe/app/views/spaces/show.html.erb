@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @space.name %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @space.address %>
+</p>
+
+<p>
+  <b>Seating capacity:</b>
+  <%= @space.seating_capacity %>
+</p>
+
+
+<%= link_to 'Edit', edit_theater_space_path(@theater, @space) %> |
+<%= link_to "Back to #{@theater.name}", theater_path(@theater) %>

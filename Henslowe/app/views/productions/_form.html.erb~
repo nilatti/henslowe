@@ -1,7 +1,8 @@
 <%= semantic_form_for [@theater, @production] do |f| %>
   <%= f.inputs do %>
+    <%= f.input :theater %>
     <%= f.input :play %>
-    <%= f.input :start_date %>
+    <%= f.input :start_date, :hint => "Choose start and end dates for the entire production, from the first rehearsal or, if you desire, production meeting, through the closing performance." %>
     <%= f.input :end_date %>
   <% end %>
   <%= f.actions %>

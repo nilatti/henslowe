@@ -4,8 +4,6 @@
     <%= f.input :date, :start_year => 1300 %>
   <%= f.input :number_of_acts %>
   <% end %>
-  
-
-  <%= f.buttons %>
+<%= f.actions %>
 <% end %>
 <p><%= link_to "Back to List", plays_path %></p>

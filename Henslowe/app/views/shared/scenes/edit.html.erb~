@@ -1,0 +1,8 @@
+<% title "Edit Scene" %>
+
+<%= render :partial => 'form' %>
+
+<p>
+  <%= link_to "Show", [@act, @scene] %> |
+  <%= link_to "View All", scenes_path %>
+</p>

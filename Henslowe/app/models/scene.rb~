@@ -3,7 +3,7 @@ class Scene < ActiveRecord::Base
   belongs_to :act
   attr_accessible :scene_number, :french_scenes_attributes, :play_id, :act_id
 
-has_many :french_scenes, :dependent => :destroy
+  has_many :french_scenes, :dependent => :destroy
   accepts_nested_attributes_for :french_scenes, :allow_destroy => :true
   has_many :characters
   default_scope :order => 'scene_number'

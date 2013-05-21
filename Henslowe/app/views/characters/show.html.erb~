@@ -10,6 +10,6 @@
 </p>
 
 <p>
-  <%= link_to "Edit", edit_character_path(@character) %> |
+  <%= link_to "Edit", edit_play_character_path(@play, @character) %> | <%= link_to "Back", play_characters_path(@play) %>
   <%= link_to "Destroy", @character, :confirm => 'Are you sure?', :method => :delete %> |
 </p>

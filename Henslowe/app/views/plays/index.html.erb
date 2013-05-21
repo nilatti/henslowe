@@ -1,15 +1,14 @@
+<% title "All Plays" %>
+
 <table>
   <tr>
     <th>Title</th>
-    <th>Author</th>
     <th>Publication Date</th>
-    <th>Genre</th>
-    <th>Summary</th>
   </tr>
   <% for play in @plays %>
     <tr>
       <td><%=h play.title %></td>
-      <td></td>
+      <td><%=h play.date %></td>
       <td><%= link_to "Show", play %></td>
       <td><%= link_to "Edit", edit_play_path(play) %></td>
       <td><%= link_to "Destroy", play, :confirm => 'Are you sure?', :method => :delete %></td>

@@ -1,7 +1,7 @@
 <% title "Theaters" %>
 
 <table>
-  <tr>
+  <tr valign="top">
     <th>Name</th>
     <th>Street Address</th>
     <th>State</th>
@@ -13,13 +13,12 @@
   </tr>
   <% for theater in @theaters %>
     <tr>
-      <td><%=h theater.name %></td>
+      <td valign="top"><%=h theater.name %></td>
       <td><%=h theater.street_address %></td>
       <td><%=h theater.state %></td>
       <td><%=h theater.zip %></td>
-      <td><%=h theater.history %></td>
       <td><%=h theater.phone_number %></td>
-      <td><%=h theater.web_site %></td>
+      <td><%=h theater.website %></td>
       <td><%=h theater.mission_statement %></td>
       <td><%= link_to "Show", theater %></td>
       <td><%= link_to "Edit", edit_theater_path(theater) %></td>

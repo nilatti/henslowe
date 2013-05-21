@@ -1,5 +1,5 @@
-<h1>Editing actor</h1>
+<% title "Editing #{@actor.name} %>
 
-<%= render :partial => 'actor_fields' %>
+<%= render :partial => 'form' %>
 <%= link_to 'Show', @actor %> |
 <%= link_to 'Back', actors_path %>

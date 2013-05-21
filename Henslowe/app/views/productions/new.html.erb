@@ -1,5 +1,5 @@
-<% title "New Production" %>
+<% title "#{@theater.name}: New Production" %>
 
 <%= render :partial => 'form' %>
 
-<p><%= link_to "Back to List", productions_path %></p>
+<p><%= link_to "Back to List", theater_productions_path(@theater) %></p>

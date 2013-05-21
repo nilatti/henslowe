@@ -1,0 +1,33 @@
+<% title "Doubling Chart for #{@production.play.title} at #{@production.theater.name}" %>
+<table border = "1">
+    <tr><td></td>
+    <% @production.play.acts.each do |a| %>
+       <% a.scenes.each do |s| %>
+          <% s.french_scenes.each do |fs| %>
+            <td><%= a.act_number %>.<%= s.scene_number %>.<%= fs.french_scene_number %></td>
+          <% end %>
+        <% end %>
+      <% end %>
+    </tr>
+<% @production.actors.uniq.each do |actor| %>
+      <tr><td><%= actor.name %><% actor.doubling_problems(@production) %></td><% @production.play.acts.each do |act| %>
+        <% act.scenes.each do |scene| %>
+          <% scene.french_scenes.each do |fs| %>
+            <% if actor.doubling_problems(@production).include?(fs) %><td bgcolor = "red"><% else %><td><% end %>
+              <% cas = actor.chars_for_production(@production) %>
+              <% cas.each do |casting| %>
+                <% if fs.characters.include?(casting.character) %>
+                 <%= casting.character.name %>
+                <% end %>
+              <% end %>
+            </td>
+          <% end %>
+        <% end %>
+      <% end %></tr>
+
+<% end %>
+</table>
+</p>
+<p>
+<link_to "Back to #{@production.play.title}", theater_production_path %>
+<p>

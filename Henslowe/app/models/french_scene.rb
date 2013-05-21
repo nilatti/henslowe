@@ -1,4 +1,6 @@
 class FrenchScene < ActiveRecord::Base
+  before_create :set_defaults
+  
   attr_accessible :french_scene_number, :play_id, :act_id, :scene_id, :character_ids
   has_many :on_stages, :dependent => :destroy
   has_many :characters, :through => :on_stages 
@@ -41,7 +43,7 @@ class FrenchScene < ActiveRecord::Base
     characters.each do |c|
       castings = Casting.find(:all, :conditions => ["production_id =? and character_id =?", production.id, c.id])
       castings.each do |p|
-        all_actors << p.user
+        all_actors << p.actor
       end
     end
     all_actors
@@ -56,4 +58,10 @@ class FrenchScene < ActiveRecord::Base
       end
     end
   end
+  def set_defaults
+    scene = self.scene
+    self.act_id = scene.act_id
+    self.play_id = scene.play_id
+  end
+
 end

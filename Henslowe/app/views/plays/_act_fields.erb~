@@ -1,9 +1,8 @@
 <p class="fields">
-<%= f.input :act_number %>
-<%= f.input :act_summary, :input_html => { :rows => 2 } %>
-<div id="edit_scene">
+<%= f.input :act_number, :required => true %>
+<div class="scenes">
 </p>
   <%= f.fields_for :scenes %>
-  <%= f.link_to_add "Add a scene", :scenes %>
-  </div>
+</div>
+  <%= f.link_to_add "Add a scene", :scenes %><br />
   <%= f.link_to_remove "Remove Act" %><br /> 

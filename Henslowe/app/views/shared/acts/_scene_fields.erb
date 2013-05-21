@@ -1,0 +1,7 @@
+<p class="fields">
+<%= f.input :scene_number  %>
+</p>
+  <%= f.fields_for :french_scenes %>
+  <%= f.link_to_add "Add a french scene", :french_scenes %>
+<%= f.link_to_remove "Remove Scene" %>
+

@@ -1,0 +1,7 @@
+<div id="edit_french_scene">
+<p class="fields">
+<%= f.input :french_scene_number %>
+<%= f.input :characters, :as => :check_boxes, :collection => Character.find(:all, :conditions => { :play_id => @act.play.id }) %>
+
+</div>
+</p>

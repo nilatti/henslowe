@@ -1,3 +1,5 @@
+<% title "All Plays" %>
+
 <table>
   <tr>
     <th>Title</th>
@@ -9,8 +11,6 @@
   <% for play in @plays %>
     <tr>
       <td><%=h play.title %></td>
-      <td><%=h play.author.first_name %> <%=h play.author.last_name %></td>
-      <td><%=h play.publication_date %></td>
       <td></td>
       <td><%= link_to "Show", play %></td>
       <td><%= link_to "Edit", edit_play_path(play) %></td>

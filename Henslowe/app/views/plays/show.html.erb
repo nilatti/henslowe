@@ -1,3 +1,9 @@
+<% title "#{@play.title}" %>
+<p>
+  <strong>Publication Date:</strong>
+  <%=h @play.date %>
+</p>
+
 <strong> Scene Chart </strong>
   <table border = "1">
     <tr><td></td>
@@ -9,13 +15,13 @@
         <% end %>
       <% end %>
     </tr>
-    <% @play.characters.each do |c| %>
-      <tr><td><%= c.name %></td>
+    <% @play.characters.each do |character| %>
+      <tr><td><%= character.name %> <em><%= link_to 'Show', play_character_path(@play, character) %> <%= link_to "Edit", edit_play_character_path(@play, character) %> <%= link_to 'Destroy', [@play, character], :confirm => 'Are you sure?', :method => :delete %></em></td>
       <% @play.acts.each do |a| %>
         <% a.scenes.each do |s| %>
           <% s.french_scenes.each do |fs| %>
-            <td><% if fs.characters.include?(c) %>
-               <%= c.name %>
+            <td><% if fs.characters.include?(character) %>
+               <%= character.name %>
             <% end %>
           <% end %></td>
         <% end %>
@@ -23,31 +29,17 @@
     <% end %></tr>
   </table>
 </p>
-<p>
-  <strong>Title:</strong>
-  <%=h @play.title %>
-</p>
-<p>
-  <strong>Publication Date:</strong>
-  <%=h @play.date %>
-</p>
-<p>
-<strong>Dramatis Personae</strong>
-<ul>
-<% for char in @play.characters %>
-<li><%= char.name %> <%= link_to 'Show', character_path(char) %> <%= link_to "Edit", edit_character_path(char) %> <%= link_to 'Destroy', char, :confirm => 'Are you sure?', :method => :delete %> </li>
-<% end %>
-</ul>
+
 <%= link_to 'Add Character', new_play_character_path(@play) %>
 <p>
   <strong>Acts:</strong><br />
   <ul>
   <% for act in @play.acts %>
-    <li><%= act.act_number %> <%= link_to 'Show', act %> <%= link_to "Edit", edit_act_path(act)%> <br /><ul>
+    <li><%= act.act_number %><br /><ul>
     <% for scene in act.scenes %>
-      <li><%= act.act_number %>.<%= scene.scene_number %> <br /><ul>
+      <li><%= act.act_number %>.<%= scene.scene_number %><br /><ul>
     <% for french_scene in scene.french_scenes %>
-      <li><%= act.act_number %>.<%= scene.scene_number %>.<%= french_scene.french_scene_number %> <%= link_to 'Edit', edit_french_scene_path(french_scene) %> <%= link_to 'Show', french_scene %></li>
+      <li><%= act.act_number %>.<%= scene.scene_number %>.<%= french_scene.french_scene_number %></li>
 
       <% end %></ul>
     <% end %></ul>

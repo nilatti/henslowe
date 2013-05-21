@@ -1,9 +1,5 @@
-<% title "Theater" %>
+<% title "#{@theater.name}" %>
 
-<p>
-  <strong>Name:</strong>
-  <%=h @theater.name %>
-</p>
 <p>
   <strong>Street Address:</strong>
   <%=h @theater.street_address %>
@@ -28,9 +24,39 @@
   <strong>Mission Statement:</strong>
   <%=h @theater.mission_statement %>
 </p>
+<strong>Performance and Rehearsal Spaces:</strong><br />
+<% @theater.spaces.each do |space| %>
+  <%= link_to "#{space.name}", theater_space_path(@theater, space) %><br />
+<% end %><br />
+<%= link_to "Make new space", new_theater_space_path(@theater) %> 
+<p>
+  <strong>Current Productions:</strong>
+  <% @theater.productions.each do |p| %>
+    <% if p.is_current? %>
+      <%= link_to "#{p.play.title}", theater_production_path(@theater, p) %>
+    <% end %>
+  <% end %>
+</p>
+<p>
+  <strong>Upcoming Productions:</strong>
+  <% @theater.productions.each do |p| %>
+    <% if p.is_future? %>
+      <%= link_to "#{p.play.title}", theater_production_path(@theater, p) %>
+    <% end %>
+  <% end %>
+</p>
+<p>
+  <strong>Past Productions:</strong>
+  <% @theater.productions.each do |p| %>
+    <% if p.is_past? %>
+      <%= link_to "#{p.play.title}", theater_production_path(@theater, p) %>
+    <% end %>
+  <% end %>
+
+</p>
 
 <p>
-  <%= link_to "Make new production", new_production_theater_path(@theater) %> | 
+  <%= link_to "Make new production", new_theater_production_path(@theater) %> | 
   <%= link_to "Edit", edit_theater_path(@theater) %> |
   <%= link_to "Destroy", @theater, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", theaters_path %>

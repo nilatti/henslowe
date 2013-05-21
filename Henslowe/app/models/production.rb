@@ -9,16 +9,20 @@ class Production < ActiveRecord::Base
   has_many :characters, :through => :play
   attr_accessible :end_date, :start_date, :play_id, :theater_id, :castings_attributes
 
-  def users_in_production
-    actors = Array.new
-    castings = Casting.find(:all, :conditions => [ 'production_id = ? AND actor_id IS NOT NULL', self.id ])
-    castings.each do |c|
-      unless actors.include?(c.user)
-        actors << c.user
-      end
+  def is_current?
+    if self.end_date >= Date.today && self.start_date <= Date.today
+      return true 
     end
-    actors
   end
-
-
+  def is_future?
+    if self.end_date > Date.today
+      return true
+    end
+  end
+  def is_past?
+    if self.end_date < Date.today
+      return true
+    end
+  end
 end
+

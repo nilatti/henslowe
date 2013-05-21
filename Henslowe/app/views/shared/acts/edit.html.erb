@@ -1,0 +1,12 @@
+<% title "Edit #{@act.play.title}, Act #{@act.act_number}" %>
+<%= semantic_nested_form_for [@play, @act] do |f| %>
+<%= f.inputs do %>
+  <%= f.input :act_number %>
+<div id="edit_scene">
+</p>
+  <%= f.fields_for :scenes %>
+  <% end %>
+  <%= f.link_to_add "Add a scene", :scenes %>
+</div>
+<%= f.actions %>
+<% end %>

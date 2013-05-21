@@ -1,4 +1,6 @@
 class Scene < ActiveRecord::Base
+  before_create :set_defaults 
+
   belongs_to :play
   belongs_to :act
   attr_accessible :scene_number, :french_scenes_attributes, :play_id, :act_id
@@ -20,5 +22,10 @@ class Scene < ActiveRecord::Base
     end
     characters
   end
+  def set_defaults
+    act = self.act
+    self.play_id = act.play_id
+  end
+
 
 end

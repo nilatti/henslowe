@@ -8,7 +8,6 @@
           <%= c.input :actor, :label => casting.character.name %>
         <% end %>
       <% end %>
-    <% end %>
   <p><%= f.actions %></p>
 <% end %>
 <p>

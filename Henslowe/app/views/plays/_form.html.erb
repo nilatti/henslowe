@@ -1,10 +1,10 @@
 <%= semantic_nested_form_for @play do |f| %>
-  <%#= f.input :author_id, :as => :select, :collection => Author.all %><br />
-  <%= f.input :title %>
-  <%= f.input :publication_date %>
-  <%= f.input :genres, :as => :check_boxes, :collection => Genre.all %>
-  <%= f.input :summary %>
+  <%= f.input :title, :required => true %>
+  <%= f.input :date, :start_year => 1300, :hint => "If you don't know the exact date, please set as much as you know and put dummy values, like \'Jan 1\'." %>
+  <div class="acts">
   <%= f.fields_for :acts %>
+  <hr>
   <%= f.link_to_add "Add an act", :acts %>
-<%= f.buttons %>
+  </div>
+<%= f.actions %>
 <% end %>

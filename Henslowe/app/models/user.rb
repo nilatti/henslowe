@@ -1,11 +1,7 @@
 class User < ActiveRecord::Base
-  attr_accessible :date_of_birth, :hire_date, :job, :first_name, :last_name, :type
+  attr_accessible :date_of_birth, :hire_date, :job, :first_name, :last_name, :type, :is_female
 
-  default_scope :order => 'first_name ASC'
-
-  has_many :castings
-  has_many :characters, :through => :castings
-  has_many :productions, :through => :castings
+  default_scope :order => 'is_female, first_name'
 
 def age
     birthdate = self.birthdate
@@ -17,30 +13,7 @@ def age
     first_name + " " + last_name
   end
   
-  def chars_for_production(production)
-    cas = Casting.find :all, :conditions => [ 'actor_id = ? AND production_id = ?', self.id, production.id ]
-  end
-
-  def doubling_problems(production)
-    fs = []
-    problems = []
-    castings = self.chars_for_production(production)
-    characters = []
-    castings.each do |cas|
-      characters << cas.character
-    end
-    characters.each do |ons|
-      ons.french_scenes.each do |french|
-        unless fs.include?(french)
-          fs << french
-        else 
-          problems << french
-        end
-      end
-    end
-    problems
-  end
-
+ 
   def available_for_rehearsal?(rehearsal)
     conflicts = Array.new
     conflicts = Conflict.find(:all, :conditions => ['user_id = ?', self.id])

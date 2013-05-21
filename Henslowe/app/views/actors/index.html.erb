@@ -5,6 +5,7 @@
     <th>Name</th>
     <th>Best Role</th>
     <th>Birthdate</th>
+    <th>Gender</th>
     <th>Hire Date</th>
   </tr>
 
@@ -13,6 +14,7 @@
     <td><%=h actor.name%></td>
     <td><%=h actor.best_role %></td>
     <td><%=h actor.date_of_birth %></td>
+    <td><% if actor.is_female %>F<% else %>M<% end %></td>
     <td><%=h actor.hire_date %></td>
     <td><%= link_to 'Show', actor %></td>
     <td><%= link_to 'Edit', edit_actor_path(actor) %></td>

@@ -1,33 +1,39 @@
 Henslowe::Application.routes.draw do
-  resources :productions
-  
+  resources :spaces
+
+
   resources :theaters do |theater|
-    resources :productions
+    resources :spaces
+    resources :productions do
+      member do
+        get 'doubling'
+      end
+    end
   end
 
-  resources :characters
-
-
-  resources :plays do |play|
-    resources :characters, :acts, :scenes
+  resources :plays do	
+    resources :characters
+    resources :acts do 
+      resources :scenes do
+        resources :french_scenes
+      end
+    end
   end
 
-  
+  resources :acts do 
+    resources :scenes, :french_scenes
+  end
 
-  
+  resources :scenes do 
+    resources :french_scenes
+  end
 
   resources :users
 
   resources :actors
 
 
-  resources :french_scenes
 
-
-  resources :scenes
-
-
-  resources :acts
 
 
 

@@ -1,0 +1,6 @@
+<p class="fields">
+<%= f.input :name %>
+<%= f.input :description, :required => false %>
+
+</p>
+

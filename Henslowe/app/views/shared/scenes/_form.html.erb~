@@ -1,0 +1,12 @@
+<%= form_for [@act, @scene] do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :number %><br />
+    <%= f.text_field :number %>
+  </p>
+  <p>
+    <%= f.label :summary %><br />
+    <%= f.text_area :summary %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

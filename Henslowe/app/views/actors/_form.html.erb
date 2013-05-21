@@ -1,8 +1,8 @@
 <%= semantic_form_for(@actor) do |f| %>
   <%= f.inputs :first_name, :last_name %>
   <%= f.input :date_of_birth, :as => :date_select, :start_year => Time.now.year - 100, :end_year => Time.now.year %>
+  <%= f.input :is_female, :as => :radio, :label => "Gender", :collection => [["Male", false],["Female", true]] %>
   <%= f.input :hire_date, :as => :date_select, :start_year => Time.now.year - 25, :end_year => Time.now.year %>
   <%= f.inputs :best_role %>
-
   <%= f.actions %>
 <% end %>
