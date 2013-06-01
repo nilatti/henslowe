@@ -1,6 +1,6 @@
 <p>
   <b>Name:</b>
-  <%=h @actor.name %>
+  <%=h @user.name %>
 </p>
 
 <p>
@@ -11,26 +11,7 @@
 <b>DOB:</b>
 <%= @user.date_of_birth %>
 
-<p>
-  <b>Current roles:</b><br />
-  <% for p in @user.productions.uniq do %>
-    <i><%= p.play.title %></i> <%= p.theater.name %> <%= p.date.year %>
-      <ul>
-    <% for casting in p.castings %>
-      <% if casting.user_id == @user.id %>
-       <li><%= casting.character.name %></li>
-      <% end %>
-    <% end %>
-      </ul>
-  <% end %>
-</p>
-
-  <b>Measurements</b><br />
-  <ul>
-    <% for m in @user.measurements do %>
-    <li><%= m.date %> <%= link_to 'Show', m %> <%= link_to 'Edit', edit_measurement_path(m) %> <%= link_to 'Destroy', m, :confirm => 'Are you sure?', :method => :delete %></li>
-    <% end %>
-   </ul>
-  <%= link_to 'New Measurement Sheet', new_user_measurement_path(@user) %><br />
+ test
+<= debug @calendar %>
 
 <%= link_to 'Back', users_path %>

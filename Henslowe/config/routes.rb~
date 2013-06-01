@@ -1,8 +1,6 @@
 Henslowe::Application.routes.draw do
-  resources :spaces
-
-
   resources :theaters do |theater|
+    resources :spaces
     resources :productions do
       member do
         get 'doubling'
@@ -31,9 +29,8 @@ Henslowe::Application.routes.draw do
 
   resources :actors
 
-
-
-
+  root :to => 'theaters#index'
+  match "/auth/google_oauth2/callback" => "sessions#create"
 
 
 

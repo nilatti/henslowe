@@ -1,0 +1,4 @@
+#/app/views/sessions/create.html.erb
+<%= debug @auth %>
+<%= debug @calendar.data %>
+<%= debug @gplus.data %>

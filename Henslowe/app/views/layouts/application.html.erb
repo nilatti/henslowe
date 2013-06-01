@@ -12,8 +12,20 @@
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <% end %>
+      <div>
+        <% if current_user %>
+          Welcome!  <br />
+          <% if current_user.first_name.nil? %>
+            Your profile is incomplete. We don't even know your name! <%= link_to "Click here to build your profile.", edit_user_path(current_user) %>
+          <% end %>
+          <%= link_to "Sign Out", signout_path %>
+        <% else %>
+          <%= link_to "Sign in with Google", "/auth/google_oauth2" %>
+        <% end %>
+      </div>
       <%= content_tag :h1, yield(:title) if show_title? %>
       <%= yield %>
     </div>
+    
   </body>
 </html>

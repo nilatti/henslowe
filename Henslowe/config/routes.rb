@@ -1,7 +1,4 @@
 Henslowe::Application.routes.draw do
-  resources :spaces
-
-
   resources :theaters do |theater|
     resources :spaces
     resources :productions do
@@ -32,10 +29,9 @@ Henslowe::Application.routes.draw do
 
   resources :actors
 
-
-
-
-
+  root :to => 'theaters#index'
+  match "/auth/google_oauth2/callback" => "sessions#create"
+  match "/signout" => "sessions#destroy"
 
 
   # The priority is based upon order of creation:

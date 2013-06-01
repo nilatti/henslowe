@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130521180228) do
+ActiveRecord::Schema.define(:version => 20130601024211) do
 
   create_table "acts", :force => true do |t|
     t.integer  "act_number"
@@ -133,6 +133,8 @@ ActiveRecord::Schema.define(:version => 20130521180228) do
     t.string   "last_name"
     t.string   "best_role"
     t.boolean  "is_female"
+    t.string   "uid"
+    t.string   "image"
   end
 
 end

@@ -1,8 +1,16 @@
 class User < ActiveRecord::Base
-  attr_accessible :date_of_birth, :hire_date, :job, :first_name, :last_name, :type, :is_female
+  attr_accessible :date_of_birth, :hire_date, :image, :job, :first_name, :last_name, :type, :is_female, :uid
 
   default_scope :order => 'is_female, first_name'
 
+def self.create_with_omniauth(auth)
+  create! do |user|
+    user.uid = auth["uid"]
+    #user.first_name = gplus['displayName']
+    user.first_name = auth['info']['givenName']
+    user.uid = auth['uid']
+  end
+end
 def age
     birthdate = self.birthdate
 	now = Time.now
