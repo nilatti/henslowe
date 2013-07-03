@@ -46,18 +46,9 @@ class FrenchScene < ActiveRecord::Base
         all_actors << p.actor
       end
     end
-    all_actors
+    return all_actors
   end
 
-  def can_rehearse?(production, rehearsal)
-    unavailable = Array.new
-    actors_called(production).each do |c|
-      if c.available_for_rehearsal?(rehearsal)
-      else
-        return false
-      end
-    end
-  end
   def set_defaults
     scene = self.scene
     self.act_id = scene.act_id

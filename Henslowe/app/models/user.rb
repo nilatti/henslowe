@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :date_of_birth, :hire_date, :image, :job, :first_name, :last_name, :type, :is_female, :uid
+  attr_accessible :date_of_birth, :hire_date, :image, :email, :calendar, :job, :first_name, :last_name, :type, :is_female, :uid
 
   default_scope :order => 'is_female, first_name'
 

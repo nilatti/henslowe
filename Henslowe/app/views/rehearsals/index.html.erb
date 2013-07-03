@@ -1,0 +1,27 @@
+<% title "Rehearsals" %>
+
+<table>
+  <tr>
+    <th>Start Time</th>
+    <th>End Time</th>
+    <th>Act</th>
+    <th>Scene</th>
+    <th>French Scene</th>
+    <th>Space</th>
+  </tr>
+  <% for rehearsal in @rehearsals %>
+    <tr>
+      <td><%= rehearsal.start_time %></td>
+      <td><%= rehearsal.end_time %></td>
+      <td><%= rehearsal.act %></td>
+      <td><%= rehearsal.scene %></td>
+      <td><%= rehearsal.french_scene %></td>
+      <td><%= rehearsal.space %></td>
+      <td><%= link_to "Show", production_rehearsal_path(@production, rehearsal) %></td>
+      <td><%= link_to "Edit", edit_production_rehearsal_path(@production, rehearsal) %></td>
+      <td><%= link_to "Destroy", [@production, rehearsal], :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Rehearsal", new_production_rehearsal_path(@production) %></p>

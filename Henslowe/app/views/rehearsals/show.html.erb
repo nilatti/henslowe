@@ -1,0 +1,34 @@
+<% title "Rehearsal" %>
+Can HC be there?
+<%= @rehearsal.who_can_make_it?(session) %>
+<%= @rehearsal.french_scenes_possible(session) %>
+<p>
+  <strong>Start Time:</strong>
+  <%= @rehearsal.start_time %>
+</p>
+<p>
+  <strong>End Time:</strong>
+  <%= @rehearsal.end_time %>
+</p>
+<p>
+  <strong>Act:</strong>
+  <%= @rehearsal.act %>
+</p>
+<p>
+  <strong>Scene:</strong>
+  <%= @rehearsal.scene %>
+</p>
+<p>
+  <strong>French Scene:</strong>
+  <%= @rehearsal.french_scene %>
+</p>
+<p>
+  <strong>Space:</strong>
+  <%= @rehearsal.space %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_production_rehearsal_path(@production, @rehearsal) %> |
+  <%= link_to "Destroy", [@production, @rehearsal], :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", production_rehearsals_path %>
+</p>

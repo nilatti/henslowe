@@ -7,6 +7,8 @@ class Production < ActiveRecord::Base
 
   has_many :actors, :through => :castings
   has_many :characters, :through => :play
+
+  has_many :rehearsals, :dependent => :destroy
   attr_accessible :end_date, :start_date, :play_id, :theater_id, :castings_attributes
 
   def is_current?

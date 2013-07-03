@@ -43,10 +43,10 @@ class FrenchScene < ActiveRecord::Base
     characters.each do |c|
       castings = Casting.find(:all, :conditions => ["production_id =? and character_id =?", production.id, c.id])
       castings.each do |p|
-        all_actors << p.user
+        all_actors << p.actor
       end
     end
-    all_actors
+    return all_actors
   end
 
   def can_rehearse?(production, rehearsal)

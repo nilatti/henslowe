@@ -1,11 +1,18 @@
 Henslowe::Application.routes.draw do
+  
+
   resources :theaters do |theater|
     resources :spaces
     resources :productions do
       member do
         get 'doubling'
+        
       end
     end
+  end
+
+  resources :productions do
+    resources :rehearsals
   end
 
   resources :plays do	

@@ -44,3 +44,5 @@ gem 'omniauth-google-oauth2', :git => 'https://github.com/zquestz/omniauth-googl
 
 # To use debugger
 # gem 'debugger'
+
+gem "mocha", :group => :test

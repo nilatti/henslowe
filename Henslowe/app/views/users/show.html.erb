@@ -1,8 +1,8 @@
 <p>
   <b>Name:</b>
-  <%=h @user.name %>
+  <%= @user.name %>
 </p>
-
+ 
 <p>
   <b>Job:</b>
   <%=h @user.job %>
@@ -10,8 +10,15 @@
 <p>
 <b>DOB:</b>
 <%= @user.date_of_birth %>
-
- test
-
-
+<b>Type:</b>
+<%= @user.type %>
+<b>Gender?</b>
+<% if @user.is_female == true %>F<% else %>M<% end %>
+UID:
+<%= @user.uid %>
+email:
+<%= @user.email %>
+calendar: 
+<%= @user.calendar %>
+<%= session.inspect %>
 <%= link_to 'Back', users_path %>

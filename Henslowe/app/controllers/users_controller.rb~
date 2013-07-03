@@ -10,7 +10,16 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     @user = User.find(params[:id])   
-  
+    client = ClientBuilder.get_client(current_user)
+    service = client.discovered_api('calendar', 'v3')
+    result = client.execute(:api_method => service.calendar_list.list)
+    @calendar = client.execute(
+      :api_method => service.calendar_list.list,
+      :parameters => {},
+      :headers => {'Content-Type' => 'application/json'})
+      
+
+     
   end
 
   # GET /users/new

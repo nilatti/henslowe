@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th></th>
     <th>Name</th>
     <th>Job</th>
     <th>Birthdate</th>
@@ -11,10 +12,10 @@
   </tr>
 
 <% @users.each do |user| %>
-<img src="<%= user.job %>">
-  <tr>
+ <tr>
+    <td><img src="<%= user.image %>"></td>
     <td><%=h user.first_name %> <%=h user.last_name%></td>
-    <td><% im = user.job %><img src="im"></td>
+    <td><%= user.job %></td>
     <td><%=h user.date_of_birth %></td>
     <td><%=h user.hire_date %></td>
     <td><%= user.uid %></td>

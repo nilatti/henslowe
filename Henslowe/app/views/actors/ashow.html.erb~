@@ -1,0 +1,12 @@
+<% title @actor.name %>
+<p>
+  <b>Best Role:</b>
+  <%=h @actor.best_role %>
+</p>
+<p>
+<b>DOB:</b>
+<%= @actor.date_of_birth %>
+
+<br />
+
+<%= link_to 'Back', actors_path %> | <%= link_to 'Edit', edit_actor_path(@actor) %>

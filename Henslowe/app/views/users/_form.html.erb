@@ -1,4 +1,5 @@
 <%= semantic_form_for(@user) do |f| %>
-  <%= f.inputs :date_of_birth, :job, :hire_date, :type, :first_name, :last_name, :is_female %>
+  <%= f.inputs :date_of_birth, :job, :hire_date, :first_name, :last_name, :is_female %>
+  <%= f.inputs :type, :collection_select, :collection => ["Actor", ""] %>
   <%= f.actions %>
 <% end %>

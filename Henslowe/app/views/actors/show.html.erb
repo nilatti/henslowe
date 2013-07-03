@@ -1,12 +1,24 @@
-<% title @actor.name %>
 <p>
-  <b>Best Role:</b>
-  <%=h @actor.best_role %>
+  <b>Name:</b>
+  <%= @actor.name %>
+</p>
+ 
+<p>
+  <b>Job:</b>
+  <%=h @actor.job %>
 </p>
 <p>
 <b>DOB:</b>
 <%= @actor.date_of_birth %>
-
-<br />
-
-<%= link_to 'Back', actors_path %> | <%= link_to 'Edit', edit_actor_path(@actor) %>
+<b>Type:</b>
+<%= @actor.type %>
+<b>Gender?</b>
+<% if @actor.is_female == true %>F<% else %>M<% end %>
+UID:
+<%= @actor.uid %>
+email:
+<%= @actor.email %>
+calendar: 
+<%= @actor.calendar %>
+<%= session.inspect %>
+<%= link_to 'Back', users_path %>
