@@ -4,21 +4,18 @@ class Act < ActiveRecord::Base
   has_many :scenes, :dependent => :destroy
   accepts_nested_attributes_for :scenes, :allow_destroy => true
   has_many :french_scenes, :through => :scenes
-  has_many :characters
+  has_many :characters, :through => :french_scenes
   default_scope :order => 'act_number'
-
-  def on_stage
-    characters = Array.new
-    s = self.scenes
-    s.each do |s|
-      s.french_scenes.each do |f|
-        f.characters.each do |c|
-          unless characters.include?(c)
-            characters << c
-          end
-        end
+  
+  def pretty_name
+    name = "Act " + self.act_number.to_s
+  end
+  def actors_called(production)
+    actors = []
+    for fs in self.french_scenes do 
+      fs.actors_called(production).each do |a|
+        actors << a
       end
     end
-    characters
   end
 end

@@ -1,12 +1,41 @@
 class Rehearsal < ActiveRecord::Base
-  attr_accessible :start_time, :end_time, :act_id, :scene_id, :french_scene_id, :space_id, :production_id
+  attr_accessible :start_time, :end_time, :act_id, :scene_id, :french_scene_id, :space_id, :production_id, :event_id
 
   belongs_to :production
   belongs_to :act
   belongs_to :scene
   belongs_to :french_scene
   belongs_to :space
-
+  
+  def rehearsal_item
+    if self.act
+      rehearse = self.act
+    elsif self.scene
+      rehearse = self.scene
+    elsif self.french_scene
+      rehearse = self.french_scene
+    end
+    return rehearse
+  end
+  
+  def actors_called(production)
+    actors = []
+    if rehearsal_item.class.name == "FrenchScene"
+      rehearsal_item.actors_called(production).each do |a|
+        actors << a
+      end
+    else
+      rehearsal_item.french_scenes.each do |fs|
+        fs.actors_called(production).each do |a|
+          unless actors.include?(a)
+            actors << a
+          end
+        end
+      end
+    end
+    return actors
+  end
+  
   def who_can_make_it?(session)
     ids = [] 
     self.production.actors.each do |a|
@@ -50,4 +79,39 @@ class Rehearsal < ActiveRecord::Base
     end
     return fsp
   end
+  
+  def scenes_possible(session)
+    scenes = []
+    actors = []
+    self.production.play.scenes.each do |s|
+      fsp = []
+      s.french_scenes.each do |fs|
+        if self.french_scenes_possible(session).include?(fs)
+          fsp << fs
+        end
+        if fsp.size == s.french_scenes.size
+          scenes << s
+        end
+      end
+    end
+    return scenes
+    #return actors
+  end
+  
+  def acts_possible(session)
+    acts = []
+    self.production.play.acts.each do |a|
+    fsp = []
+      a.french_scenes.each do |fs|
+        if self.french_scenes_possible(session).include?(fs)
+          fsp << fs
+        end
+#        if fsp == a.french_scenes
+#          acts << a
+#        end
+      end
+    end
+    return acts
+  end
+  
 end

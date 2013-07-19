@@ -16,6 +16,10 @@ class FrenchScene < ActiveRecord::Base
     act << '.' << scene << '.' << fs
   end
 
+  def pretty_name
+    name = "French Scene " + self.full_path
+  end
+
   def on_stage
     characters = Array.new
     self.characters.each do |c|
@@ -38,7 +42,7 @@ class FrenchScene < ActiveRecord::Base
   end
 
   def actors_called(production)
-    all_actors = Array.new
+    all_actors = []
     self.on_stage
     characters.each do |c|
       castings = Casting.find(:all, :conditions => ["production_id =? and character_id =?", production.id, c.id])

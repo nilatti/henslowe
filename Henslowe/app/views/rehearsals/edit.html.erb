@@ -1,7 +1,14 @@
 <% title "Edit Rehearsal" %>
 
-<%= render 'form' %>
+<%= semantic_form_for [@production, @rehearsal] do |f| %>
+  <%= f.inputs :start_time, :end_time %>
+  French scene, scene, or act--pick <b>one</b>!
+  <%= f.input :french_scene, :as => :select, :collection => @rehearsal.french_scenes_possible(session), :member_label => :full_path %>
+  <%= f.input :scene, :as => :select, :collection => @rehearsal.scenes_possible(session), :member_label => :full_path %>
+  <%= f.input :act, :as => :select, :collection => @rehearsal.acts_possible(session), :member_label => :act_number %>
 
+<%= f.actions %>
+<% end %>
 <p>
   <%= link_to "Show", [@production, @rehearsal] %> |
   <%= link_to "View All", production_rehearsals_path(@production) %>

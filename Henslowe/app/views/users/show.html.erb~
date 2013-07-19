@@ -1,24 +1,23 @@
 <p>
   <b>Name:</b>
-  
+  <%= @user.name %>
 </p>
  
 <p>
-  <b>Job:</b>
-  <%=h @user.job %>
+  <b>Jobs:</b>
+  <% @user.niches.each do |n| %>
+    <%= n.title %><br />
+  <% end %>
 </p>
 <p>
 <b>DOB:</b>
-<%= @user.date_of_birth %>
-<b>Type:</b>
-<%= @user.type %>
+<%= @user.date_of_birth %><br />
 <b>Gender?</b>
-<% if @user.is_female == true %>F<% else %>M<% end %>
+<% if @user.is_female == true %>F<% else %>M<% end %><br />
 UID:
-<%= @user.uid %>
+<%= @user.uid %><br />
 email:
-<%= @user.email %>
+<%= @user.email %><br />
 calendar: 
-<%= @user.calendar %>
-<%= session.inspect %>
-<%= link_to 'Back', users_path %>
+<%= @user.calendar %><br />
+<%= link_to 'Back', users_path %><%= link_to 'Edit', edit_user_path(@user) %>

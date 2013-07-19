@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @niche.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @niche.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_niche_path(@niche) %> |
+<%= link_to 'Back', niches_path %>

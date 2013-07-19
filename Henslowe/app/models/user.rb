@@ -1,7 +1,12 @@
 class User < ActiveRecord::Base
-  attr_accessible :date_of_birth, :hire_date, :image, :email, :calendar, :job, :first_name, :last_name, :type, :is_female, :uid
+  attr_accessible :date_of_birth, :hire_date, :image, :email, :calendar, :first_name, :last_name, :is_female, :uid, :refresh_token, :jobs_attributes, :niche_ids
 
   default_scope :order => 'is_female, first_name'
+
+has_many :jobs
+accepts_nested_attributes_for :jobs
+
+has_many :niches, :through => :jobs
 
 def self.create_with_omniauth(auth)
   create! do |user|

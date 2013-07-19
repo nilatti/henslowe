@@ -7,25 +7,31 @@ class Scene < ActiveRecord::Base
 
   has_many :french_scenes, :dependent => :destroy
   accepts_nested_attributes_for :french_scenes, :allow_destroy => :true
-  has_many :characters
+  has_many :characters, :through => :french_scenes
   default_scope :order => 'scene_number'
 
-  def on_stage
-    characters = Array.new
-    fs = self.french_scenes
-    fs.each do |f|
-      f.characters.each do |c|
-        unless characters.include?(c)
-          characters << c
-       end
-      end
-    end
-    characters
+  def full_path
+    path = self.act.act_number.to_s + "." + self.scene_number.to_s
+    path.to_s
+    return path
   end
+  
+  def pretty_name
+    name = "Scene " + self.full_path
+  end
+
   def set_defaults
     act = self.act
     self.play_id = act.play_id
   end
 
-
+  def actors_called(production)
+    actors = []
+    for fs in self.french_scenes do 
+      fs.actors_called(production).each do |a|
+        actors << a
+      end
+    end
+    return actors
+  end
 end

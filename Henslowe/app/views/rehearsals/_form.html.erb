@@ -1,5 +1,8 @@
 <%= semantic_form_for [@production, @rehearsal] do |f| %>
-  <%= f.inputs %>
+  <%= f.inputs :start_time, :end_time %>
+  <%= f.input :space, :collection => @production.theater.spaces %>
+  <%= f.input :act, :collection => @production.play.acts, :member_label => :act_number %>
+  <%= f.input :scene, :collection => @production.play.scenes, :member_label => :full_path %>
+  <%= f.input :french_scene, :collection => @production.play.french_scenes, :member_label => :full_path %>
   <%= f.actions %>
-
 <% end %>

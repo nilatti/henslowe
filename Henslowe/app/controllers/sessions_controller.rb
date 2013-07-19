@@ -5,12 +5,12 @@ class SessionsController < ApplicationController
 
     #Use the token from the data to request a list of calendars
     @token = @auth["credentials"]["token"]
+    @refresh = @auth["credentials"]["refresh_token"]
     client = Google::APIClient.new
     client.authorization.access_token = @token
     client.authorization.refresh_token = @refresh
     session[:token] = @token
-    session[:refresh] = @refresh
-
+    
     service = client.discovered_api('calendar', 'v3')
    
     @calendar = client.execute(
@@ -34,14 +34,16 @@ class SessionsController < ApplicationController
     if @user
     else
 
-      @user = User.new :uid => @auth['uid'], :first_name => profile['name']['givenName'], :last_name => profile['name']['familyName'], :image => profile['image']['url'], :email => @auth['info']['email'], :calendar => cal
+      @user = User.new :uid => @auth['uid'], :first_name => profile['name']['givenName'], :last_name => profile['name']['familyName'], :image => profile['image']['url'], :email => @auth['info']['email'], :calendar => cal, :refresh_token => @refresh, :type => "Actor"
       @user.save
-      end
+      
+    end
         
   
     # set session user
     session[:user_id] = @user.id
-    #render :text => request.env['omniauth.auth'].to_yaml
+    session[:refresh] = @user.refresh_token
+    #render :text => request.env['omniauth.auth'].to_json
     redirect_to users_path, :notice => "Signed in as #{@user.first_name}"
   end
   

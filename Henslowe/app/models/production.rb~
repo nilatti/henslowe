@@ -17,7 +17,7 @@ class Production < ActiveRecord::Base
     end
   end
   def is_future?
-    if self.end_date > Date.today
+    if self.start_date > Date.today
       return true
     end
   end
@@ -25,10 +25,6 @@ class Production < ActiveRecord::Base
     if self.end_date < Date.today
       return true
     end
-  end
-
-  def actors_in_production
-    actors = production.actors
   end
 end
 

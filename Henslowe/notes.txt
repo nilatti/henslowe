@@ -1,0 +1,18 @@
+ask for help with:
+
+Editing rehearsal is super slow because it's trying to figure out which acts/scenes/fs are available. How to make this faster?
+
+Everything that talks to GCal is slow. Can we make this faster? This is everything that has to do with rehearsals
+
+Google API login. What do we do with the refresh token? How can I get deeper access to users' calendars? Right now it's working, but hacked together and requires auth every time, as well as stupid settings in GCal itself.
+
+HTML5 date picker w/formtastic
+
+To do:
+set up role-based permissions do it like casting table--automate adding actors upon casting? auditioners vs. actors
+ONCE that is done, extract "actor" from everywhere, switch to user.actor? method
+figure out how to set up whole rehearsal schedule
+rebuild costumer measurement things
+create user-specific dashboards
+prettyfy everything
+Once gcal issues are resolved consider adding performance class

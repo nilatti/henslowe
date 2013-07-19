@@ -1,4 +1,6 @@
 <%= semantic_form_for(@user) do |f| %>
-  <%= f.inputs :date_of_birth, :job, :hire_date, :first_name, :last_name, :is_female %>
+  <%= f.inputs :date_of_birth, :hire_date, :first_name, :last_name, :is_female %>
+  <%= f.input :niches, :as => :check_boxes, :collection => Niches.all %>
   <%= f.actions %>
 <% end %>
+

@@ -1,0 +1,4 @@
+class AddEventIdToRehearsals < ActiveRecord::Migration
+  def change
+  end
+end

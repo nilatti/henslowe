@@ -1,28 +1,7 @@
-<%= form_for @rehearsal do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :start_time %><br />
-    <%= f.datetime_select :start_time %>
-  </p>
-  <p>
-    <%= f.label :end_time %><br />
-    <%= f.datetime_select :end_time %>
-  </p>
-  <p>
-    <%= f.label :act %><br />
-    <%= f.text_field :act %>
-  </p>
-  <p>
-    <%= f.label :scene %><br />
-    <%= f.text_field :scene %>
-  </p>
-  <p>
-    <%= f.label :french_scene %><br />
-    <%= f.text_field :french_scene %>
-  </p>
-  <p>
-    <%= f.label :space %><br />
-    <%= f.text_field :space %>
-  </p>
-  <p><%= f.submit %></p>
+<%= semantic_form_for [@production, @rehearsal] do |f| %>
+  <%= f.inputs :start_time, :end_time %>
+  <%= f.input :space, :collection => @production.theater.spaces %>
+  <%= f.input :act, :collection => @production.play.acts, :member_label => :act_number %>
+  <%= f.input :scene, :collection => @production.play.scenes, :member_label => :full_path %>
+  <%= f.actions %>
 <% end %>

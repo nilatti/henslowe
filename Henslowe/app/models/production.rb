@@ -1,4 +1,6 @@
 class Production < ActiveRecord::Base
+  attr_accessible :end_date, :start_date, :play_id, :theater_id, :castings_attributes
+
   belongs_to :play
   belongs_to :theater
 
@@ -9,7 +11,6 @@ class Production < ActiveRecord::Base
   has_many :characters, :through => :play
 
   has_many :rehearsals, :dependent => :destroy
-  attr_accessible :end_date, :start_date, :play_id, :theater_id, :castings_attributes
 
   def is_current?
     if self.end_date >= Date.today && self.start_date <= Date.today
@@ -17,7 +18,7 @@ class Production < ActiveRecord::Base
     end
   end
   def is_future?
-    if self.end_date > Date.today
+    if self.start_date > Date.today
       return true
     end
   end

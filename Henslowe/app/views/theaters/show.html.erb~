@@ -33,7 +33,7 @@
   <strong>Current Productions:</strong>
   <% @theater.productions.each do |p| %>
     <% if p.is_current? %>
-      <%= link_to "#{p.play.title}", theater_production_path(@theater, p) %>
+      <%= link_to "#{p.play.title}", theater_production_path(@theater, p) %><br />
     <% end %>
   <% end %>
 </p>
@@ -41,7 +41,7 @@
   <strong>Upcoming Productions:</strong>
   <% @theater.productions.each do |p| %>
     <% if p.is_future? %>
-      <%= link_to "#{p.play.title}", theater_production_path(@theater, p) %>
+      <%= link_to "#{p.play.title}", theater_production_path(@theater, p) %><br />
     <% end %>
   <% end %>
 </p>
@@ -49,12 +49,11 @@
   <strong>Past Productions:</strong>
   <% @theater.productions.each do |p| %>
     <% if p.is_past? %>
-      <%= link_to "#{p.play.title}", theater_production_path(@theater, p) %>
+      <%= link_to "#{p.play.title}", theater_production_path(@theater, p) %><br />
     <% end %>
   <% end %>
 
 </p>
-
 <p>
   <%= link_to "Make new production", new_theater_production_path(@theater) %> | 
   <%= link_to "Edit", edit_theater_path(@theater) %> |

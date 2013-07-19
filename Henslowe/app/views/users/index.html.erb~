@@ -8,6 +8,8 @@
     <th>Birthdate</th>
     <th>Hire Date</th>
     <th>UID</th>
+    <th>Cal ID</th>
+    <th>Refresh Token</th>
     <th>created</th>
   </tr>
 
@@ -19,6 +21,8 @@
     <td><%=h user.date_of_birth %></td>
     <td><%=h user.hire_date %></td>
     <td><%= user.uid %></td>
+    <td><%= user.calendar %></td>
+    <td><%= user.refresh_token %></td>
     <td><%= user.created_at %></td>
     <td><%= link_to 'Show', user %></td>
     <td><%= link_to 'Edit', edit_user_path(user) %></td>

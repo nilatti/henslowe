@@ -1,5 +1,5 @@
 Henslowe::Application.routes.draw do
-  
+  resources :niches
 
   resources :theaters do |theater|
     resources :spaces

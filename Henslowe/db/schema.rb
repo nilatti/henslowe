@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130605122304) do
+ActiveRecord::Schema.define(:version => 20130718170937) do
 
   create_table "acts", :force => true do |t|
     t.integer  "act_number"
@@ -58,6 +58,27 @@ ActiveRecord::Schema.define(:version => 20130605122304) do
   add_index "french_scenes", ["play_id"], :name => "index_french_scenes_on_play_id"
   add_index "french_scenes", ["scene_id"], :name => "index_french_scenes_on_scene_id"
 
+  create_table "jobs", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "niche_id"
+    t.integer  "theater_id"
+    t.integer  "production_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "jobs", ["niche_id"], :name => "index_jobs_on_job_id"
+  add_index "jobs", ["production_id"], :name => "index_jobs_on_production_id"
+  add_index "jobs", ["theater_id"], :name => "index_jobs_on_theater_id"
+  add_index "jobs", ["user_id"], :name => "index_jobs_on_user_id"
+
+  create_table "niches", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "on_stages", :force => true do |t|
     t.integer  "character_id"
     t.integer  "french_scene_id"
@@ -97,6 +118,7 @@ ActiveRecord::Schema.define(:version => 20130605122304) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.integer  "production_id"
+    t.string   "event_id"
   end
 
   create_table "scenes", :force => true do |t|
@@ -117,6 +139,7 @@ ActiveRecord::Schema.define(:version => 20130605122304) do
     t.integer  "theater_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.string   "calendar"
   end
 
   add_index "spaces", ["theater_id"], :name => "index_spaces_on_theater_id"
@@ -132,13 +155,12 @@ ActiveRecord::Schema.define(:version => 20130605122304) do
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
     t.string   "city"
+    t.string   "calendar"
   end
 
   create_table "users", :force => true do |t|
     t.date     "date_of_birth"
-    t.string   "job"
     t.date     "hire_date"
-    t.string   "type"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.string   "first_name"
@@ -149,6 +171,7 @@ ActiveRecord::Schema.define(:version => 20130605122304) do
     t.string   "image"
     t.string   "email"
     t.string   "calendar"
+    t.string   "refresh_token"
   end
 
 end

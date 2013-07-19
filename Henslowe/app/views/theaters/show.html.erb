@@ -24,6 +24,10 @@
   <strong>Mission Statement:</strong>
   <%=h @theater.mission_statement %>
 </p>
+<p>
+  <strong>Calendar ID:</strong>
+  <%=h @theater.calendar %>
+</p>
 <strong>Performance and Rehearsal Spaces:</strong><br />
 <% @theater.spaces.each do |space| %>
   <%= link_to "#{space.name}", theater_space_path(@theater, space) %><br />
