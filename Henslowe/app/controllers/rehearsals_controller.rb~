@@ -20,9 +20,6 @@ class RehearsalsController < ApplicationController
     @data = result.data
     @actors = @data['attendees']
     
-    #@parsed = ActiveSupport::JSON.decode(data)
-    
-    
   end
   
   def new
@@ -127,7 +124,6 @@ class RehearsalsController < ApplicationController
   
   def destroy
     @rehearsal = production.rehearsals.find(params[:id])
-    @production = @rehearsal.production
     @rehearsal.destroy
     flash[:notice] = "Successfully destroyed rehearsal."
     redirect_to production_rehearsals_path(@production)

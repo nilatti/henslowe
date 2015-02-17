@@ -17,5 +17,6 @@ class Act < ActiveRecord::Base
         actors << a
       end
     end
+    return actors
   end
 end

@@ -34,7 +34,7 @@ class SessionsController < ApplicationController
     if @user
     else
 
-      @user = User.new :uid => @auth['uid'], :first_name => profile['name']['givenName'], :last_name => profile['name']['familyName'], :image => profile['image']['url'], :email => @auth['info']['email'], :calendar => cal, :refresh_token => @refresh, :type => "Actor"
+      @user = User.new :uid => @auth['uid'], :first_name => profile['name']['givenName'], :last_name => profile['name']['familyName'], :image => profile['image']['url'], :email => @auth['info']['email'], :calendar => cal, :refresh_token => @refresh
       @user.save
       
     end

@@ -36,7 +36,7 @@ class Rehearsal < ActiveRecord::Base
     return actors
   end
   
-  def who_can_make_it?(session)
+  def who_can_make_it?(session) #can I do this once and cache it? is there a debug flag I could set?
     ids = [] 
     self.production.actors.each do |a|
       ids << a #get all actors who are cast in the production into an array
@@ -47,8 +47,8 @@ class Rehearsal < ActiveRecord::Base
     query = {'timeMin'=> self.start_time, 'timeMax' => self.end_time, 'items' =>  ids} #build search query string here.
     
     client = Google::APIClient.new
-    client.authorization.access_token = session[:token]
-    service = client.discovered_api('calendar', 'v3')
+    client.authorization.access_token = session[:token] #can I take these steps out?
+    service = client.discovered_api('calendar', 'v3') #can I take these steps out? what if I get this document and save in an initializer?
     result = client.execute({
       :api_method => service.freebusy.query,
       body: query.to_json, #call search query string here. Why? Search me!

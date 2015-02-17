@@ -1,0 +1,10 @@
+<%= semantic_form_for [@theater, @job] do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :user, :label => "Employee", :as => :select, :collection => User.all %> is the
+    <%= f.input :niche, :label => "Job", :as => :select, :collection => Niche.all, :label_method => :title %> <i>on <%= f.input :production, :as => :select, :collection => @theater.productions, :label_method => :name %></i>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :input %>
+  <% end %>
+<% end %>

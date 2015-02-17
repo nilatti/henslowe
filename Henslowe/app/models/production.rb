@@ -7,7 +7,7 @@ class Production < ActiveRecord::Base
   has_many :castings, :dependent => :destroy
   accepts_nested_attributes_for :castings
 
-  has_many :actors, :through => :castings
+  has_many :users, :through => :castings
   has_many :characters, :through => :play
 
   has_many :rehearsals, :dependent => :destroy
@@ -26,6 +26,10 @@ class Production < ActiveRecord::Base
     if self.end_date < Date.today
       return true
     end
+  end
+
+  def name
+    name = self.play.title + " at " + self.theater.name
   end
 end
 

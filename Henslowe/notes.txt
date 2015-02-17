@@ -1,18 +1,21 @@
-ask for help with:
+Bootstrap installed; use at some point to CSS the thing less ugly
 
 Editing rehearsal is super slow because it's trying to figure out which acts/scenes/fs are available. How to make this faster?
 
 Everything that talks to GCal is slow. Can we make this faster? This is everything that has to do with rehearsals
+Make a local cache of people's calendars.
+Look for API that lets ask for everyone's info at a time.
 
-Google API login. What do we do with the refresh token? How can I get deeper access to users' calendars? Right now it's working, but hacked together and requires auth every time, as well as stupid settings in GCal itself.
+learn about rails cache http://blog.pebblecode.com/post/11607822701/fetching-and-caching-google-calendar-data-in-rails
 
-HTML5 date picker w/formtastic
+Sharing--set to share w/theater and stage manager--Make note about this on user's dashboard, possibly with confirmation by sm and/or director
 
-To do:
-set up role-based permissions do it like casting table--automate adding actors upon casting? auditioners vs. actors
-ONCE that is done, extract "actor" from everywhere, switch to user.actor? method
 figure out how to set up whole rehearsal schedule
 rebuild costumer measurement things
 create user-specific dashboards
 prettyfy everything
-Once gcal issues are resolved consider adding performance class
+Once gcal issues are resolved consider adding performance class (like to schedule performances)
+Make cascading dropdowns like this: http://pullmonkey.com/2012/08/11/dynamic-select-boxes-ruby-on-rails-3/
+Consider making users only accessible through theaters	
+
+add something that will let me do "save and next" to prepopulate french scenes and do one at a time. Will reduce errors

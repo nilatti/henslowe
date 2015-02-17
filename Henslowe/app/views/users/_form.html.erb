@@ -1,6 +1,14 @@
-<%= semantic_form_for(@user) do |f| %>
-  <%= f.inputs :date_of_birth, :hire_date, :first_name, :last_name, :is_female %>
-  <%= f.input :niches, :as => :check_boxes, :collection => Niche.all %>
+<%= semantic_nested_form_for(@user) do |f| %>
+  <%= f.inputs :first_name, :last_name, :email, :is_female %>
+  <%= f.inputs do %>
+    <%= f.input :date_of_birth, :as => :date_picker %>
+    <%= f.input :hire_date, :as => :date_picker %>
+  <% end %>
+  <div class="jobs">
+  <%= f.fields_for :jobs %>
+  <hr> 
+  <%= f.link_to_add "Add a job", :jobs %>
+
   <%= f.actions %>
 <% end %>
 

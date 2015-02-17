@@ -1,12 +1,17 @@
 class User < ActiveRecord::Base
-  attr_accessible :date_of_birth, :hire_date, :image, :email, :calendar, :first_name, :last_name, :is_female, :uid, :refresh_token, :jobs_attributes
+  attr_accessible :date_of_birth, :hire_date, :image, :email, :calendar, :first_name, :last_name, :is_female, :uid, :refresh_token, :jobs_attributes, :niche_ids, :type
 
   default_scope :order => 'is_female, first_name'
 
 has_many :jobs
 accepts_nested_attributes_for :jobs
-
 has_many :niches, :through => :jobs
+has_many :theaters, :through => :jobs
+
+has_many :castings
+has_many :productions, :through => :castings
+has_many :theaters, :through => :productions
+
 
 def self.create_with_omniauth(auth)
   create! do |user|
@@ -16,6 +21,15 @@ def self.create_with_omniauth(auth)
     user.uid = auth['uid']
   end
 end
+
+def jobs_for_theater(theater)
+  jobs = []
+  self.jobs.each do |j|
+    jobs << j
+  end
+  return jobs
+end
+
 def age
     birthdate = self.birthdate
 	now = Time.now
@@ -46,6 +60,30 @@ def age
       true
     end
   end
+  def chars_for_production(production)
+    cas = Casting.find :all, :conditions => [ 'user_id = ? AND production_id = ?', self.id, production.id ]
+  end
+  
+    def doubling_problems(production)
+    fs = []
+    problems = []
+    castings = self.chars_for_production(production)
+    characters = []
+    castings.each do |cas|
+      characters << cas.character
+    end
+    characters.each do |ons|
+      ons.french_scenes.each do |french|
+        unless fs.include?(french)
+          fs << french
+        else 
+          problems << french
+        end
+      end
+    end
+    problems
+  end
+
 end
 
 

@@ -9,6 +9,8 @@ Henslowe::Application.routes.draw do
         
       end
     end
+    resources :users
+    resources :jobs
   end
 
   resources :productions do
@@ -33,8 +35,6 @@ Henslowe::Application.routes.draw do
   end
 
   resources :users
-
-  resources :actors
 
   root :to => 'theaters#index'
   match "/auth/google_oauth2/callback" => "sessions#create"

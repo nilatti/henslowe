@@ -1,0 +1,25 @@
+<h1>Listing jobs</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @jobs.each do |jobs| %>
+  <tr>
+    <td><%= niche.title %></td>
+    <td><%= niche.description %></td>
+    <td><%= link_to 'Show', niche %></td>
+    <td><%= link_to 'Edit', edit_niche_path(niche) %></td>
+    <td><%= link_to 'Destroy', niche, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Niche', new_niche_path %>

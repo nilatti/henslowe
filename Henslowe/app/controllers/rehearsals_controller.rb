@@ -33,7 +33,7 @@ class RehearsalsController < ApplicationController
       client.authorization.access_token = session[:token]
       service = client.discovered_api('calendar', 'v3')
       cal = @rehearsal.production.theater.calendar
-      actors = @rehearsal.actors_called
+      actors = @rehearsal.actors_called(@production)
       actors.collect! do |a|
         { :email => a.email }
       end

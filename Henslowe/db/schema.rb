@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130718170937) do
+ActiveRecord::Schema.define(:version => 20130720164908) do
 
   create_table "acts", :force => true do |t|
     t.integer  "act_number"
@@ -23,16 +23,16 @@ ActiveRecord::Schema.define(:version => 20130718170937) do
   add_index "acts", ["play_id"], :name => "index_acts_on_play_id"
 
   create_table "castings", :force => true do |t|
-    t.integer  "actor_id"
+    t.integer  "user_id"
     t.integer  "character_id"
     t.integer  "production_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
 
-  add_index "castings", ["actor_id"], :name => "index_castings_on_actor_id"
   add_index "castings", ["character_id"], :name => "index_castings_on_character_id"
   add_index "castings", ["production_id"], :name => "index_castings_on_production_id"
+  add_index "castings", ["user_id"], :name => "index_castings_on_actor_id"
 
   create_table "characters", :force => true do |t|
     t.string   "name"

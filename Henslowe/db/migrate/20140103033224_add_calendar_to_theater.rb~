@@ -1,0 +1,4 @@
+class AddCalendarToTheater < ActiveRecord::Migration
+  def change
+  end
+end

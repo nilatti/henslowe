@@ -1,11 +1,12 @@
 <% title ("All Users") %>
 
-<table>
+<table class="table-striped">
   <tr>
     <th></th>
     <th>Name</th>
     <th>Birthdate</th>
     <th>Hire Date</th>
+    <th>Email</th>
     <th>UID</th>
     <th>Cal ID</th>
     <th>Refresh Token</th>
@@ -18,18 +19,20 @@
     <td><%=h user.first_name %> <%=h user.last_name%></td>
     <td><%=h user.date_of_birth %></td>
     <td><%=h user.hire_date %></td>
+    <td><%=h user.email %></td>
     <td><%= user.uid %></td>
     <td><%= user.calendar %></td>
     <td><%= user.refresh_token %></td>
     <td><%= user.created_at %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-      <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', user, class: 'btn btn-primary btn-xs' %></td>
+    <td><%= link_to 'Edit', edit_user_path(user), class: 'btn btn-info btn-xs' %></td>
+      <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-danger btn-xs' %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
- <%= link_to 'New user', new_user_path %>
-
+ <%= link_to new_user_path, class: 'btn btn-success' do %>
+  <i class="glyphicon glyphicon-plus"></i> New User
+<% end %>

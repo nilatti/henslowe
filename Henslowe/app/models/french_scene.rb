@@ -47,7 +47,7 @@ class FrenchScene < ActiveRecord::Base
     characters.each do |c|
       castings = Casting.find(:all, :conditions => ["production_id =? and character_id =?", production.id, c.id])
       castings.each do |p|
-        all_actors << p.actor
+        all_actors << p.user
       end
     end
     return all_actors

@@ -5,8 +5,15 @@ class User < ActiveRecord::Base
 
 has_many :jobs
 accepts_nested_attributes_for :jobs
-
+scope :is_actor, joins(:jobs).where('niche_id = ?', 5)
 has_many :niches, :through => :jobs
+has_many :theaters, :through => :jobs
+
+has_many :castings
+has_many :productions, :through => :castings
+has_many :theaters, :through => :productions
+
+
 
 def self.create_with_omniauth(auth)
   create! do |user|
@@ -16,6 +23,15 @@ def self.create_with_omniauth(auth)
     user.uid = auth['uid']
   end
 end
+
+def jobs_for_theater(theater)
+  jobs = []
+  self.jobs.each do |j|
+    jobs << j
+  end
+  return jobs
+end
+
 def age
     birthdate = self.birthdate
 	now = Time.now
@@ -44,6 +60,34 @@ def age
       false
     else
       true
+    end
+  end
+  def chars_for_production(production)
+    cas = Casting.find :all, :conditions => [ 'user_id = ? AND production_id = ?', self.id, production.id ]
+  end
+  
+    def doubling_problems(production)
+    fs = []
+    problems = []
+    castings = self.chars_for_production(production)
+    characters = []
+    castings.each do |cas|
+      characters << cas.character
+    end
+    characters.each do |ons|
+      ons.french_scenes.each do |french|
+        unless fs.include?(french)
+          fs << french
+        else 
+          problems << french
+        end
+      end
+    end
+    problems
+  end
+  def is_actor?
+    if self.niches.map(&:id).include?(5)
+      return true
     end
   end
 end

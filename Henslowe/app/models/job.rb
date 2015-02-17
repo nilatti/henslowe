@@ -5,4 +5,5 @@ class Job < ActiveRecord::Base
   belongs_to :niche
   belongs_to :theater
   belongs_to :production
+  default_scope order(:theater_id)
 end

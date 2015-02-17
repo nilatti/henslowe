@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @job.niche.title %>
+</p>
+
+<p>
+  <b>Employee:</b>
+  <%= @job.user.name %>
+</p>
+<p>
+	<b>Theater:</b>
+	<%= @job.theater.name %>
+</p>
+<p>
+	<b>Production: </b>
+	<%= @job.production.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_theater_job_path(@theater, @job) %> |
+<%= link_to 'Back', theater_jobs_path(@theater) %>

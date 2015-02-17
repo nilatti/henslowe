@@ -1,3 +1,5 @@
+<% title "#{@user.name}" %>
+
 <p>
   <b>Name:</b>
   <%= @user.name %>
@@ -5,19 +7,21 @@
  
 <p>
   <b>Jobs:</b>
-  <% @user.niches.each do |n| %>
-    <%= n.title %><br />
+
+  <% @user.jobs.each do |j| %>
+    <%= link_to "#{j.niche.title}", j.niche %> at <%= link_to "#{j.theater.name}", j.theater %> <% if j.production %> on <em><%= link_to "#{j.production.play.title}", theater_production_path(j.theater, j.production) %></em> <% end %><br />
   <% end %>
 </p>
 <p>
 <b>DOB:</b>
 <%= @user.date_of_birth %><br />
+<b>Hire date:</b>
+<%= @user.hire_date %><br />
 <b>Gender?</b>
-<% if @user.is_female == true %>F<% else %>M<% end %><br />
-UID:
-<%= @user.uid %><br />
+<% if @user.is_female %>F<% else %>M<% end %><br />
 email:
 <%= @user.email %><br />
-calendar: 
-<%= @user.calendar %><br />
+
+<% if @user.is_actor? %> User is actor <% end %>
+<br />
 <%= link_to 'Back', users_path %>|<%= link_to 'Edit', edit_user_path(@user) %>

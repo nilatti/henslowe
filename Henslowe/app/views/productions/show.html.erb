@@ -3,23 +3,25 @@
   <%= link_to "#{@production.play.title}", @production.play %><br />
   <strong>Date:</strong>
   <%=h @production.start_date %> - <%=h @production.end_date %><br />
-
 </p>
 <p>
-<p>
-  <strong>Casting:</strong><br />
-    <table border="1">
-    <tr><td>Character</td><td>Actor</td></tr>
-      <% for casting in @production.castings %>
-        <tr><td valign="top"><%= link_to casting.character.name, play_character_path(@production.play, casting.character) %></td>
-        <td><% unless casting.actor.nil? %>
-          <%= link_to casting.actor.name, actor_path(casting.actor) %>
-        </td>
-        </tr>
-        <% end %>
-      <% end %>
+Cast list:<br />
+<ul>
+<% users = @production.users.uniq %>
+<% users.each do |u| %>
+  <li><%= link_to "#{u.name}", u %>
+  <ul><% castings = u.chars_for_production(@production) %>
+  	<% castings.each do |c| %>
+  	<li><%= c.character.name %></li>
+  	<% end %>
+  </ul>
+  </li>
 
-</table>
+<% end %>
+</ul>
+</p>
+
+<p>
 <%= link_to "Show rehearsals", production_rehearsals_path(@production) %>
   <%= link_to "Schedule rehearsal", new_production_rehearsal_path(@production, @rehearsal) %>
   <%= link_to "Edit", edit_theater_production_path(@theater, @production) %> |
