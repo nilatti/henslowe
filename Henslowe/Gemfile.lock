@@ -6,12 +6,6 @@ GIT
       actionpack (>= 3.0)
 
 GIT
-  remote: git://github.com/ryanb/nested_form.git
-  revision: a25eebe8205e4e63899873b716535def6c1f5a9d
-  specs:
-    nested_form (0.3.2)
-
-GIT
   remote: https://github.com/zquestz/omniauth-google-oauth2.git
   revision: f6f26d9645a6fcf55192497ecedeb5ed5826c7c5
   specs:
@@ -61,6 +55,7 @@ GEM
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
     builder (3.0.4)
+    cocoon (1.2.6)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -195,6 +190,7 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bootstrap-sass (~> 3.2.0)
+  cocoon
   coffee-rails (~> 3.2.1)
   formtastic!
   formtastic-bootstrap
@@ -203,7 +199,6 @@ DEPENDENCIES
   less-rails
   mocha
   mysql2
-  nested_form!
   nested_has_many_through
   nifty-generators
   omniauth (= 1.1.0)

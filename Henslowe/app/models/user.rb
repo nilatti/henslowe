@@ -3,17 +3,15 @@ class User < ActiveRecord::Base
 
   default_scope :order => 'is_female, first_name'
 
-has_many :jobs
-accepts_nested_attributes_for :jobs
-scope :is_actor, joins(:jobs).where('niche_id = ?', 5)
+has_many :jobs, :dependent => :destroy
+accepts_nested_attributes_for :jobs, :allow_destroy => true
+scope :is_actor, joins(:jobs).where('niche_id = ?', 9) # sets user to be actor if niche = 9 because 9 is the actor niche right now. If redeploy with new server, need to check this TK
 has_many :niches, :through => :jobs
 has_many :theaters, :through => :jobs
 
 has_many :castings
-has_many :productions, :through => :castings
+has_many :productions, :through => :jobs
 has_many :theaters, :through => :productions
-
-
 
 def self.create_with_omniauth(auth)
   create! do |user|

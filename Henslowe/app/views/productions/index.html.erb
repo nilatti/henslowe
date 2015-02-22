@@ -6,6 +6,7 @@
     <th>Title</th>
   </tr>
   <% for production in @productions %>
+    <% if current_user.productions.include?(production) %>
     <tr>
       <td><%=h production.start_date %> - <%=h production.end_date %></td>
       <td><%=h production.play.title %></td>
@@ -14,6 +15,7 @@
       <td><%= link_to "Edit", edit_theater_production_path(@theater, production) %></td>
       <td><%= link_to "Destroy", [@theater, production], :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
+    <% end %>
   <% end %>
 </table>
 

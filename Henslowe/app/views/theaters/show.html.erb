@@ -28,11 +28,9 @@
   <strong>Calendar ID:</strong>
   <%=h @theater.calendar %>
 </p>
-
-
-<iframe src="https://www.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=7u71nkgm0105qk7qvvqjg8dlhk%40group.calendar.google.com&amp;color=%232F6309&amp;src=thegreatamericantheatercompany%40gmail.com&amp;color=%23182C57&amp;src=lb6i6fdgsthtpg2u71teu3r73o%40group.calendar.google.com&amp;color=%23B1440E&amp;ctz=America%2FNew_York" style=" border-width:0 " width="800" height="600" frameborder="0" scrolling="no"></iframe>
-<br />
-<%= @theater.embed_calendar %>
+  <% unless @theater.calendar.empty? %>
+    <%= @theater.embed_calendar.html_safe %><br />
+  <% end %>
 
 <strong>Performance and Rehearsal Spaces:</strong><br />
 <% @theater.spaces.each do |space| %>
@@ -70,7 +68,7 @@
 <p><strong>Users:</strong>
   <% users =  @theater.users.uniq %>
   <% users.each do |user| %>
-    <%= link_to "#{user.name}" %> -- <% user.jobs.each do |job| %><%= job.niche.title %> <% unless job.production_id.nil? %>on <%= job.production.play.title %><% end %><% unless job == user.jobs.last %>, <% end %><% end %>
+    <%= link_to "#{user.name}", user %> -- <% user.jobs.each do |job| %><%= job.niche.title %> <% unless job.production_id.nil? %>on <%= job.production.play.title %><% end %><% unless job == user.jobs.last %>, <% end %><% end %>
   <% end %>
 </p> 
   <%= link_to "Create New Job", new_theater_job_path(@theater) %>

@@ -52,6 +52,6 @@ before_filter :load_theater
 
 private
   def load_theater
-    @theater = Theater.find(params[:theater_id])
+   @theater = Theater.find(params[:theater_id])
   end
 end

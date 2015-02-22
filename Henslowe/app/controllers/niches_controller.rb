@@ -44,7 +44,7 @@ class NichesController < ApplicationController
 
     respond_to do |format|
       if @niche.save
-        format.html { redirect_to @niche, notice: 'Niche was successfully created.' }
+        format.html { redirect_to action: "index", notice: 'Niche was successfully created.' }
         format.json { render json: @niche, status: :created, location: @niche }
       else
         format.html { render action: "new" }

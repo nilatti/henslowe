@@ -1,6 +1,6 @@
 <% title "Theaters" %>
 
-<table>
+<table class="table-striped">
   <tr valign="top">
     <th>Name</th>
     <th>Street Address</th>
@@ -12,19 +12,20 @@
     <th>Mission Statement</th>
   </tr>
   <% for theater in @theaters %>
-    <tr valign="top">
-      <td><%=h theater.name %></td>
-      <td><%=h theater.street_address %></td>
-      <td><%=h theater.state %></td>
-      <td><%=h theater.zip %></td>
-      <td><%=h theater.phone_number %></td>
-      <td><%=h theater.website %></td>
-      <td><%=h theater.mission_statement %></td>
-      <td><%= link_to "Show", theater %></td>
-      <td><%= link_to "Edit", edit_theater_path(theater) %></td>
-      <td><%= link_to "Destroy", theater, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
+    <% if current_user.nil? || current_user.theaters.include?(theater) %><!-- take this out eventually, if someone's not logged in they shouldn't see anything, but should see all if they are an admin --> 
+      <tr valign="top">
+        <td><%=h theater.name %></td>
+        <td><%=h theater.street_address %></td>
+        <td><%=h theater.state %></td>
+        <td><%=h theater.zip %></td>
+        <td><%=h theater.phone_number %></td>
+        <td><%=h theater.website %></td>
+        <td><%=h theater.mission_statement %></td>
+        <td><%= link_to "Show", theater %></td>
+        <td><%= link_to "Edit", edit_theater_path(theater) %></td>
+        <td><%= link_to "Destroy", theater, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
   <% end %>
 </table>
-
 <p><%= link_to "New Theater", new_theater_path %></p>

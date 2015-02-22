@@ -10,9 +10,6 @@
   <body>
     <div id="main-container" class="container-fluid">
       <%=render 'shared/navigation' %>
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
       <div>
         <% if current_user %>
           Welcome!  <br />

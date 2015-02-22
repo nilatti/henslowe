@@ -15,6 +15,8 @@
   <%= @space.seating_capacity %>
 </p>
 
+<%= @space.embed_calendar.html_safe %><br />
+
 
 <%= link_to 'Edit', edit_theater_space_path(@theater, @space) %> |
 <%= link_to "Back to #{@theater.name}", theater_path(@theater) %>

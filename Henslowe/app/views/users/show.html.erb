@@ -21,6 +21,11 @@
 <% if @user.is_female %>F<% else %>M<% end %><br />
 email:
 <%= @user.email %><br />
+Theaters:
+<% @user.theaters.each do |t| %>
+	<%= t.name %>
+<% end %>
+
 
 <% if @user.is_actor? %> User is actor <% end %>
 <br />

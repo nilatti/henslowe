@@ -2,6 +2,9 @@ class UsersController < ApplicationController
 #  filter_access_to :all, :attribute_check => true
   # GET /users
   # GET /users.xml
+  def user_params
+   params.require(:user).permit(:first_name, :last_name, :name, :date_of_birth, :date_of_hire, :is_female, :email, :calendar, jobs_attributes: [:id, :_destroy])
+  end
   def index
     @users = User.all
   end
@@ -40,6 +43,7 @@ class UsersController < ApplicationController
   # PUT /users/1.xml
   def update
     @user = User.find(params[:id])
+
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

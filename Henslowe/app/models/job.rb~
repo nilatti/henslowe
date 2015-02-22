@@ -1,7 +1,10 @@
 class Job < ActiveRecord::Base
   attr_accessible :user_id, :niche_id, :theater_id, :production_id
+  dependent_destroy => true
+  
   belongs_to :user
   belongs_to :niche
   belongs_to :theater
   belongs_to :production
+  default_scope order(:theater_id)
 end

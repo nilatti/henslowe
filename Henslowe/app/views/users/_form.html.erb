@@ -1,14 +1,28 @@
-<%= semantic_nested_form_for(@user) do |f| %>
-  <%= f.inputs :first_name, :last_name, :email, :is_female %>
-  <%= f.inputs do %>
+ <% flash.each do |key, value| %>
+   <div class="alert alert-<%= key %>"><%= value %></div>
+ <% end %>
+
+<%= semantic_form_for(@user) do |f| %>
+  <% f.inputs do %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <br />Please use the format YYYY-MM-DD for dates.<br />
     <%= f.input :date_of_birth, :as => :date_picker %>
     <%= f.input :hire_date, :as => :date_picker %>
+    <%= f.input :is_female, :as => :radio, :label => "Gender", :collection => [["Male", false], ["Female", true]] %>  
+    <%= f.input :email %>
+    <%= f.input :calendar %>
+    <h3>Tasks</h3>
+    <div id='tasks'>
+        <%= f.semantic_fields_for :jobs do |job| %>
+          <%= render 'job_fields', :f => job %>
+        <% end %>
+    <div class='links'>
+      <%= link_to_add_association 'Add a job', f, :jobs %>
+    </div>
+  </div>
+   
+     <%= f.submit 'Save' %>
+   
   <% end %>
-  <div class="jobs">
-  <%= f.fields_for :jobs %>
-  <hr> 
-  <%= f.link_to_add "Add a job", :jobs %>
-
-  <%= f.actions %>
 <% end %>
-

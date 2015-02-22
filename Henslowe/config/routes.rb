@@ -34,7 +34,9 @@ Henslowe::Application.routes.draw do
     resources :french_scenes
   end
 
-  resources :users
+  resources :users do
+    resources :productions
+  end
 
   root :to => 'theaters#index'
   match "/auth/google_oauth2/callback" => "sessions#create"

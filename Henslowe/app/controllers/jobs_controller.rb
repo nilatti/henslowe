@@ -21,7 +21,7 @@ before_filter :load_theater
     @job = @theater.jobs.new(params[:job])
     if @job.save
       flash[:notice] = "Successfully created job."
-      redirect_to [@theater, @job]
+      redirect_to [@theater, @jobs]
     else
       render :action => 'new'
     end

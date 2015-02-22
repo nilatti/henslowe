@@ -27,8 +27,9 @@ gem 'autoprefixer-rails'
 end
 
 gem 'jquery-rails'
+gem 'cocoon'
 gem 'nested_has_many_through'
-gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git'
+#gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git'
 gem 'formtastic', :git => 'git://github.com/justinfrench/formtastic.git'
 gem "nifty-generators", :group => :development
 
