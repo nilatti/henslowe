@@ -1,10 +1,11 @@
-<%= semantic_nested_form_for @play do |f| %>
+<%= semantic_form_for @play do |f| %>
   <%= f.input :title, :required => true %>
-  <%= f.input :date, :start_year => 1300, :hint => "If you don't know the exact date, please set as much as you know and put dummy values, like \'Jan 1\'." %>
-  <div class="acts">
-  <%= f.fields_for :acts %>
-  <hr>
-  <%= f.link_to_add "Add an act", :acts %>
+  <%= f.input :date, :as => :date_picker, :hint => "If you don't know the exact date, please set as much as you know and put dummy values, like \'Jan 1\'." %>
+  <div id='acts'>
+  <%= f.semantic_fields_for :acts do |act| %>
+  <%= render 'act_fields', :f => act %>
+        <% end %>
+	<%= link_to_add_association 'Add an Act', f, :acts %>
   </div>
 <%= f.actions %>
 <% end %>

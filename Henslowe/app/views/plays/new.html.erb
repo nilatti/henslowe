@@ -1,8 +1,8 @@
 <% title "New Play" %>
-<%= semantic_nested_form_for @play do |f| %>
+<%= semantic_form_for @play do |f| %>
   <%= f.inputs do %>
     <%= f.input :title %>
-    <%= f.input :date, :start_year => 1300 %>
+    <%= f.input :date, :as => :date_picker %>
   <%= f.input :number_of_acts %>
   <% end %>
 <%= f.actions %>

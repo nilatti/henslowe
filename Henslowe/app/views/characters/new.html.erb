@@ -1,4 +1,13 @@
-<% title "New Character" %>
+<% title "New Character in #{@play.title}" %>
+
+<p><strong>Existing characters:</strong>
+	<ul>
+		<% @play.characters.each do |character| %> 
+			<li><%= character.name %></li>
+		<% end %>
+	</ul>
+</p>
+
 
 <%= render :partial => 'form' %>
 

@@ -1,13 +1,9 @@
-<p id="notice"><%= notice %></p>
+<% title "#{@niche.title}" %>
 
-<p>
-  <b>Title:</b>
-  <%= @niche.title %>
-</p>
 
 <p>
   <b>Description:</b>
-  <%= @niche.description %>
+  <%= @niche.description.html_safe %>
 </p>
 
 

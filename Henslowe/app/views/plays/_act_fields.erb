@@ -1,9 +1,10 @@
-<p class="fields">
-<%= f.input :act_number, :required => true %>
-<div class="scenes">
-</p>
-  <%= f.fields_for :scenes %>
-</div>
-  <%= f.link_to_add "Add a scene", :scenes %><br />
-  <%= f.link_to_remove "Remove Act" %><br /> 
+<p class="nested-fields">
+	<%= f.input :act_number, :required => true %>
+	<div id="scenes">
+		<%= f.semantic_fields_for :scenes do |scene| %>
+			<%= render 'scene_fields', :f => scene %>
+		<% end %>
+		<%= link_to_add_association "Add a Scene", f, :scenes %> 
+	</div>
+	<%= link_to_remove_association "Remove Act", f %><br /> 
   <hr>

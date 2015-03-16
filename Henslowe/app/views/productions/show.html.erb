@@ -7,17 +7,9 @@
 <p>
 Cast list:<br />
 <ul>
-<% users = @production.users.uniq %>
-<% users.each do |u| %>
-  <li><%= link_to "#{u.name}", u %>
-  <ul><% castings = u.chars_for_production(@production) %>
-  	<% castings.each do |c| %>
-  	<li><%= c.character.name %></li>
-  	<% end %>
-  </ul>
-  </li>
-
-<% end %>
+  <% @production.castings.each do |casting| %>
+  <li><%= casting.character.name %> - <% if casting.user %><%= casting.user.name %><% end %></li>
+  <% end %>
 </ul>
 </p>
 

@@ -3,10 +3,11 @@ Number of characters: <%= @play.total_characters %><br />
 Male: <%= @play.total_male_characters %><br />
 Female: <%= @play.total_female_characters %><br />
 
-<table>
+<table class="table-striped">
   <tr>
     <th>Name</th>
-    <th>Play</th>
+    <th>Gender</th>
+    <th></th>
   </tr>
   <% for character in @characters %>
     <tr>

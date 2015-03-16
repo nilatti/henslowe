@@ -1,32 +1,31 @@
 <% title "#{@user.name}" %>
-
 <p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
- 
-<p>
-  <b>Jobs:</b>
+  <b>Jobs:</b><br>
 
-  <% @user.jobs.each do |j| %>
-    <%= link_to "#{j.niche.title}", j.niche %> at <%= link_to "#{j.theater.name}", j.theater %> <% if j.production %> on <em><%= link_to "#{j.production.play.title}", theater_production_path(j.theater, j.production) %></em> <% end %><br />
+<% @user.jobs.each do |j| %>
+	<% if j.niche.id == 9 %><% @user.castings_for_production(j.production).each do |casting| %><%= casting.character.name %><% end %> in
+	<% elsif j.niche.id == 10 %>Auditioned for
+	<% else %> <%= link_to "#{j.niche.title}", j.niche %> for
+	<% end %>
+	<% if j.production %> <em><%= link_to "#{j.production.play.title}", theater_production_path(j.theater, j.production) %></em> at <%= link_to "#{j.theater.name}", j.theater %>  <% end %><br />
   <% end %>
 </p>
 <p>
-<b>DOB:</b>
-<%= @user.date_of_birth %><br />
+<% if @user.date_of_birth %>
+	<b>DOB:</b>
+	<%= @user.date_of_birth %><br />
+	<b>Age:</b> <%= @user.age %><br>
+<% end %>
 <b>Hire date:</b>
 <%= @user.hire_date %><br />
 <b>Gender?</b>
 <% if @user.is_female %>F<% else %>M<% end %><br />
-email:
-<%= @user.email %><br />
-Theaters:
+<b>email:</b>
+<%= mail_to "#{@user.email}" %><br />
+<p>Theaters:<br>
 <% @user.theaters.each do |t| %>
-	<%= t.name %>
+	<%= link_to "#{t.name}", t %><br />
 <% end %>
+</p>
 
-
-<% if @user.is_actor? %> User is actor <% end %>
-<br />
 <%= link_to 'Back', users_path %>|<%= link_to 'Edit', edit_user_path(@user) %>

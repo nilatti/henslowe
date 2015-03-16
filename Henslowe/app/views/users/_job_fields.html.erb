@@ -1,6 +1,7 @@
-<div class="nested-fields">
+<div class="nested-fields form-inline">
 	<%= f.inputs do %>
 		<%= f.input :niche, :label => 'Job' %> at <%= f.input :theater, :as => :select, :collection => Theater.all, :label_method => :name %> on <%= f.input :production, :as => :select, :collection => Production.all, :label_method => :name %>
 		<%= link_to_remove_association "Remove Job", f %><br /> 
 	<% end %>
+	<hr>
 </div>

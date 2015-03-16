@@ -1,11 +1,15 @@
-<%= title "Edit Production" %>
+
+<% title "Editing #{@production.play.title} at #{@theater.name}"%>
 
 <%= semantic_form_for [@theater, @production] do |f| %>
-  <%= f.inputs %>
+    <%= f.input :play %>
+    <%= f.input :start_date, :as => :date_picker %>
+    <%= f.input :end_date, :as => :date_picker %>
+
     <p>Castings<br />
       <% @production.castings.each do |casting| %>
         <%= f.semantic_fields_for :castings, casting do |c| %>
-          <%= c.input :user, :collection => User.is_actor, :label => casting.character.name %>
+          <%= c.input :user, :collection => User.actor, :label => casting.character.name %>
         <% end %>
       <% end %>
   <p><%= f.actions %></p>

@@ -1,6 +1,6 @@
-<p class="fields">
+<p class="nested-fields">
 <%= f.input :french_scene_number, :required => true, :hint => "French scenes usually are letters (a, b, c)" %>
 <%= f.input :characters, :as => :check_boxes, :collection => @play.characters.all %>
-<%= f.link_to_remove "Remove French Scene" %>
+<%= link_to_remove_association "Remove French Scene", f %>
 </p>
 <hr>

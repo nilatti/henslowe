@@ -5,13 +5,18 @@ class User < ActiveRecord::Base
 
 has_many :jobs, :dependent => :destroy
 accepts_nested_attributes_for :jobs, :allow_destroy => true
-scope :is_actor, joins(:jobs).where('niche_id = ?', 9) # sets user to be actor if niche = 9 because 9 is the actor niche right now. If redeploy with new server, need to check this TK
+scope :actor, -> { joins(:niches).where("niches.id = ? or niches.id = ?", 9, 10)} # 9 is actor niche, 10 is auditioner niche. change if niche id changes.
 has_many :niches, :through => :jobs
 has_many :theaters, :through => :jobs
 
 has_many :castings
 has_many :productions, :through => :jobs
 has_many :theaters, :through => :productions
+
+def is_actor
+  User.actor.include?(self)
+end
+
 
 def self.create_with_omniauth(auth)
   create! do |user|
@@ -31,8 +36,8 @@ def jobs_for_theater(theater)
 end
 
 def age
-    birthdate = self.birthdate
-	now = Time.now
+    birthdate = self.date_of_birth
+	  now = Time.now
     age = now.year - birthdate.year - (birthdate.to_time.change(:year => now.year) > now ? 1 : 0)
   end	
   
@@ -60,7 +65,8 @@ def age
       true
     end
   end
-  def chars_for_production(production)
+
+  def castings_for_production(production)
     cas = Casting.find :all, :conditions => [ 'user_id = ? AND production_id = ?', self.id, production.id ]
   end
   

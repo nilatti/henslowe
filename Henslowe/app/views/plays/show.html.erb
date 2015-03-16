@@ -5,12 +5,12 @@
 </p>
 
 <strong> Scene Chart </strong>
-  <table border = "1">
-    <tr><td></td>
+  <table border = "1" class="table-striped">
+    <tr><th>Character</th>
       <% @play.acts.each do |a| %>
         <% a.scenes.each do |s| %>
           <% s.french_scenes.each do |fs| %>
-            <td><%= a.act_number %>.<%= fs.scene.scene_number %>.<%= fs.french_scene_number %></td>
+            <th><%= a.act_number %>.<%= fs.scene.scene_number %>.<%= fs.french_scene_number %></th>
           <% end %>
         <% end %>
       <% end %>

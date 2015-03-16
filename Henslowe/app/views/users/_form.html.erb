@@ -1,12 +1,7 @@
- <% flash.each do |key, value| %>
-   <div class="alert alert-<%= key %>"><%= value %></div>
- <% end %>
-
 <%= semantic_form_for(@user) do |f| %>
   <% f.inputs do %>
     <%= f.input :first_name %>
     <%= f.input :last_name %>
-    <br />Please use the format YYYY-MM-DD for dates.<br />
     <%= f.input :date_of_birth, :as => :date_picker %>
     <%= f.input :hire_date, :as => :date_picker %>
     <%= f.input :is_female, :as => :radio, :label => "Gender", :collection => [["Male", false], ["Female", true]] %>  
@@ -17,6 +12,7 @@
         <%= f.semantic_fields_for :jobs do |job| %>
           <%= render 'job_fields', :f => job %>
         <% end %>
+    </div> 
     <div class='links'>
       <%= link_to_add_association 'Add a job', f, :jobs %>
     </div>

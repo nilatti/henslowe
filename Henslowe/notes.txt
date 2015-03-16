@@ -19,3 +19,5 @@ Make cascading dropdowns like this: http://pullmonkey.com/2012/08/11/dynamic-sel
 Consider making users only accessible through theaters	
 
 add something that will let me do "save and next" to prepopulate french scenes and do one at a time. Will reduce errors
+
+Ask Myers: Why isn't my_formtastic_changes loading last so it gets precedence?

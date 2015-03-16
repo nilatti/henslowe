@@ -6,7 +6,6 @@
     <th>Street Address</th>
     <th>State</th>
     <th>Zip</th>
-    <th>History</th>
     <th>Phone Number</th>
     <th>Web Site</th>
     <th>Mission Statement</th>
@@ -20,7 +19,7 @@
         <td><%=h theater.zip %></td>
         <td><%=h theater.phone_number %></td>
         <td><%=h theater.website %></td>
-        <td><%=h theater.mission_statement %></td>
+        <td><%= theater.mission_statement.html_safe %></td>
         <td><%= link_to "Show", theater %></td>
         <td><%= link_to "Edit", edit_theater_path(theater) %></td>
         <td><%= link_to "Destroy", theater, :confirm => 'Are you sure?', :method => :delete %></td>

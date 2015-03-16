@@ -7,26 +7,21 @@
     <th>Birthdate</th>
     <th>Hire Date</th>
     <th>Email</th>
-    <th>UID</th>
     <th>Cal ID</th>
-    <th>Refresh Token</th>
-    <th>created</th>
+    <th>Actor?</th>
   </tr>
 
 <% @users.each do |user| %>
  <tr>
     <td><img src="<%= user.image %>"></td>
-    <td><%=h user.first_name %> <%=h user.last_name%></td>
+    <td><%= link_to "#{user.name}", user %></td>
     <td><%=h user.date_of_birth %></td>
     <td><%=h user.hire_date %></td>
-    <td><%=h user.email %></td>
-    <td><%= user.uid %></td>
+    <td><%= mail_to "#{user.email}" %></td>
     <td><%= user.calendar %></td>
-    <td><%= user.refresh_token %></td>
-    <td><%= user.created_at %></td>
-    <td><%= link_to 'Show', user, class: 'btn btn-primary btn-xs' %></td>
+    <td><% if User.actor.include?(user) %>YES<% end %></td>
     <td><%= link_to 'Edit', edit_user_path(user), class: 'btn btn-info btn-xs' %></td>
-      <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-danger btn-xs' %></td>
+    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete, class: 'btn btn-danger btn-xs' %></td>
   </tr>
 <% end %>
 </table>

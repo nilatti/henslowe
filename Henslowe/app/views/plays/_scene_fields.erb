@@ -1,10 +1,12 @@
-<p class="fields">
+<p class="nested-fields">
 <%= f.input :scene_number, :required => true  %>
 </p>
-  <div class="french_scenes"> 
-  <%= f.fields_for :french_scenes %>
+  <div id='french_scenes'>
+        <%= f.semantic_fields_for :french_scenes do |fs| %>
+          <%= render 'french_scene_fields', :f => fs %>
+        <% end %>
   </div>
-  <%= f.link_to_add "Add a french scene", :french_scenes %><br />
-<%= f.link_to_remove "Remove Scene" %>
+  <%= link_to_add_association "Add a french scene", f, :french_scenes %><br />
+<%= link_to_remove_association "Remove Scene", f %>
 <hr>
 

@@ -5,11 +5,16 @@
   <%=h @character.name %>
 </p>
 <p>
+	<strong>Gender:</strong>
+	<% if @character.is_female? %>Female<% else %>Male<% end %>
+<p>
   <strong>Play:</strong>
   <%=h link_to @character.play.title, play_path(@character.play) %>
 </p>
 
 <p>
-  <%= link_to "Edit", edit_play_character_path(@play, @character) %> | <%= link_to "Back", play_characters_path(@play) %>
+  <%= link_to "Edit", edit_play_character_path(@play, @character) %> | <%= link_to "Back", play_path(@play) %> |
   <%= link_to "Destroy", [@play, @character], :confirm => 'Are you sure?', :method => :delete %> |
 </p>
+
+<p><%= link_to "Add New Character", new_play_character_path(@play) %>
