@@ -89,11 +89,5 @@ def age
     end
     problems
   end
-  def is_actor?
-    if self.niches.map(&:id).include?(5)
-      return true
-    end
-  end
-end
 
 

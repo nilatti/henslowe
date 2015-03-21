@@ -23,7 +23,7 @@
 <b>email:</b>
 <%= mail_to "#{@user.email}" %><br />
 <p>Theaters:<br>
-<% @user.theaters.each do |t| %>
+<% @user.theaters.uniq.each do |t| %>
 	<%= link_to "#{t.name}", t %><br />
 <% end %>
 </p>

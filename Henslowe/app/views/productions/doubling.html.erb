@@ -9,7 +9,6 @@
         <% end %>
       <% end %>
     </tr>
-    <%= @production.users.size %>
 <% @production.users.uniq.each do |user| %>
       <tr><td><%= user.name %><%= user.id %><% user.doubling_problems(@production) %></td><% @production.play.acts.each do |act| %>
         <% act.scenes.each do |scene| %>

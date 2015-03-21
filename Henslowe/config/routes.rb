@@ -14,6 +14,7 @@ Henslowe::Application.routes.draw do
     end
     resources :users
     resources :jobs
+    #resources :casting, controller: 'jobs', type: 'Casting'
   end
 
   resources :productions do

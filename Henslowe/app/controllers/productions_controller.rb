@@ -21,10 +21,10 @@ before_filter :load_theater
     @production = @theater.productions.new(params[:production]) 
     if @production.play
       @production.play.characters.each do |c|
-        @production.castings.build(:character_id => c.id)
+        @production.jobs.build(:character_id => c.id, :type => 'Casting', :niche_id => 9, :theater_id => @production.theater.id )
       end
     end
-    if @production.play_title
+    unless @production.play_title.blank?
       play = Play.create(:title => @production.play_title)
       @production.play = play
     end
