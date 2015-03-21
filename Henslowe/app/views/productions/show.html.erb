@@ -8,7 +8,7 @@
 Cast list:<br />
 <ul>
   <% @production.castings.each do |casting| %>
-  <li><%= casting.character.name %> - <% if casting.user %><%= casting.user.name %><% end %></li>
+  <li><%= casting.character.name %> - <% if casting.user %><%= link_to "#{casting.user.name}", user_path(casting.user) %><% end %></li>
   <% end %>
 </ul>
 </p>

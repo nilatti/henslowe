@@ -9,12 +9,13 @@
         <% end %>
       <% end %>
     </tr>
+    <%= @production.users.size %>
 <% @production.users.uniq.each do |user| %>
-      <tr><td><%= user.name %><% user.doubling_problems(@production) %></td><% @production.play.acts.each do |act| %>
+      <tr><td><%= user.name %><%= user.id %><% user.doubling_problems(@production) %></td><% @production.play.acts.each do |act| %>
         <% act.scenes.each do |scene| %>
           <% scene.french_scenes.each do |fs| %>
             <% if user.doubling_problems(@production).include?(fs) %><td bgcolor = "red"><% else %><td><% end %>
-              <% cas = user.chars_for_production(@production) %>
+              <% cas = user.castings_for_production(@production) %>
               <% cas.each do |casting| %>
                 <% if fs.characters.include?(casting.character) %>
                  <%= casting.character.name %>

@@ -3,6 +3,18 @@
   <strong>Publication Date:</strong>
   <%=h @play.date %>
 </p>
+<p>
+  <strong>Author:</strong>
+  <%= link_to "#{@play.author.name}", author_path(@play.author) %>
+</p>
+<p>
+  <strong>Productions:</strong>
+  <ul>
+  <% @play.productions.each do |p| %>
+    <li><%= link_to "#{p.theater.name}", theater_path(p.theater) %>: <%= p.start_date %> - <%= p.end_date %></li>
+  <% end %>
+</ul>
+</p>
 
 <strong> Scene Chart </strong>
   <table border = "1" class="table-striped">

@@ -5,4 +5,6 @@ class Job < ActiveRecord::Base
   belongs_to :niche
   belongs_to :theater
   belongs_to :production
+
+  has_one :casting
 end

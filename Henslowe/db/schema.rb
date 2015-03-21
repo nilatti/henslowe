@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130720164908) do
+ActiveRecord::Schema.define(:version => 20150321021655) do
 
   create_table "acts", :force => true do |t|
     t.integer  "act_number"
@@ -22,12 +22,23 @@ ActiveRecord::Schema.define(:version => 20130720164908) do
 
   add_index "acts", ["play_id"], :name => "index_acts_on_play_id"
 
+  create_table "authors", :force => true do |t|
+    t.string   "first_name"
+    t.date     "birth_date"
+    t.date     "death_date"
+    t.text     "bio"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "last_name"
+  end
+
   create_table "castings", :force => true do |t|
     t.integer  "user_id"
     t.integer  "character_id"
     t.integer  "production_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.integer  "job_id"
   end
 
   add_index "castings", ["character_id"], :name => "index_castings_on_character_id"
@@ -94,6 +105,7 @@ ActiveRecord::Schema.define(:version => 20130720164908) do
     t.date     "date"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "author_id"
   end
 
   create_table "productions", :force => true do |t|

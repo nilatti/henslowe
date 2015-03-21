@@ -7,7 +7,7 @@
     <%= f.input :is_female, :as => :radio, :label => "Gender", :collection => [["Male", false], ["Female", true]] %>  
     <%= f.input :email %>
     <%= f.input :calendar %>
-    <h3>Tasks</h3>
+    <h3>Jobs</h3>
     <div id='tasks'>
         <%= f.semantic_fields_for :jobs do |job| %>
           <%= render 'job_fields', :f => job %>

@@ -13,6 +13,8 @@ class CastingsController < ApplicationController
   
   def create
     @casting = Casting.new(params[:casting])
+    job.build(:theater_id => @casting.production.theater_id, :niche_id => 9)
+    @casting.job_id = job.id
     if @casting.save
       flash[:notice] = "Successfully created casting."
       redirect_to @casting
@@ -41,4 +43,8 @@ class CastingsController < ApplicationController
     flash[:notice] = "Successfully destroyed casting."
     redirect_to castings_url
   end
+
+  #after_save  do
+  #  @casting.job.update_attribute(:user_id, @casting.user_id)
+ # end
 end

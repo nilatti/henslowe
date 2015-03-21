@@ -1,7 +1,11 @@
 class Production < ActiveRecord::Base
-  attr_accessible :end_date, :start_date, :play_id, :theater_id, :castings_attributes, :jobs_attributes
+  attr_accessible :end_date, :start_date, :play_id, :theater_id, :castings_attributes, :jobs_attributes, :play_title
+  attr_accessor :play_title
+
 
   belongs_to :play
+  accepts_nested_attributes_for :play
+
   belongs_to :theater
 
   has_many :castings, :dependent => :destroy

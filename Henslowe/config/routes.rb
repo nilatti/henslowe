@@ -1,4 +1,7 @@
 Henslowe::Application.routes.draw do
+  resources :authors
+
+
   resources :niches
 
   resources :theaters do |theater|

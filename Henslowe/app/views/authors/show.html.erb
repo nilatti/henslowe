@@ -1,0 +1,32 @@
+<% title "#{@author.name}" %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @author.name %>
+</p>
+
+<p>
+  <b>Birth date:</b>
+  <%= @author.birth_date %>
+</p>
+
+<p>
+  <b>Death date:</b>
+  <%= @author.death_date %>
+</p>
+
+<p>
+  <b>Bio:</b>
+  <%= @author.bio %>
+</p>
+<p> 
+	<b>Plays:</b>
+	<% @author.plays.each do |p| %>
+		<%= link_to "#{p.title}", play_path(p) %>
+	<% end %>
+</p>
+
+<%= link_to 'Edit', edit_author_path(@author) %> |
+<%= link_to 'Back', authors_path %>

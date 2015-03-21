@@ -73,7 +73,7 @@ def age
     def doubling_problems(production)
     fs = []
     problems = []
-    castings = self.chars_for_production(production)
+    castings = self.castings_for_production(production)
     characters = []
     castings.each do |cas|
       characters << cas.character

@@ -1,4 +1,7 @@
 class Play < ActiveRecord::Base
+  attr_accessible :title, :date, :number_of_acts, :acts_attributes, :characters_attributes, :scenes_attributes, :author_id, :author_first_name, :author_last_name
+  attr_accessor :number_of_acts, :author_first_name, :author_last_name
+
   has_many :productions
   has_many :theaters, :through => :productions
   has_many :acts, :dependent => :destroy
@@ -7,8 +10,11 @@ class Play < ActiveRecord::Base
   has_many :french_scenes, :through => :scenes
   has_many :characters
   accepts_nested_attributes_for :characters, :allow_destroy => true
-attr_accessible :title, :date, :number_of_acts, :acts_attributes, :characters_attributes, :scenes_attributes
-  attr_accessor :number_of_acts
+  
+  belongs_to :author
+  accepts_nested_attributes_for :author
+  
+  default_scope { order('authors.last_name').includes(:author) } 
   
   def total_characters
   #determines number of characters in play

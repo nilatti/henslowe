@@ -1,0 +1,4 @@
+class AddJobIdToCastings < ActiveRecord::Migration
+  def change
+  end
+end

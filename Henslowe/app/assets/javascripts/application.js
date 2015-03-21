@@ -15,4 +15,5 @@
 //= require cocoon
 //= require bootstrap-sprockets
 //= require twitter/bootstrap
+//= require select2
 //= require_tree .

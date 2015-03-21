@@ -1,6 +1,7 @@
 <%= semantic_form_for [@theater, @production] do |f| %>
   <%= f.inputs do %>
-    <%= f.input :play %>
+    	<%= f.input :play %>
+   	    <%= f.input :play_title, :as => :string, :label => "If the play you are producing isn't in the above list, please write the title here:" %>
     <br /><strong>Dates must be in the format YYYY-MM-DD for now. Working on adding a clicker picker</strong>
     <%= f.input :start_date, :as => :date_picker, :hint => "Choose start and end dates for the entire production, from the first rehearsal or, if you desire, production meeting, through the closing performance." %>
     <%= f.input :end_date, :as => :date_picker %>

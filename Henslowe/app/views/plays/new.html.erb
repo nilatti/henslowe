@@ -2,8 +2,10 @@
 <%= semantic_form_for @play do |f| %>
   <%= f.inputs do %>
     <%= f.input :title %>
+    <%= f.input :author, :as => :select %>
+    <%= f.input :author_first_name, :label => "If the author is not listed, please provide their first and last names here" %><%= f.input :author_last_name %>
     <%= f.input :date, :as => :date_picker %>
-  <%= f.input :number_of_acts %>
+  	<%= f.input :number_of_acts %>
   <% end %>
 <%= f.actions %>
 <% end %>

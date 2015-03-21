@@ -18,10 +18,17 @@ before_filter :load_theater
   end
   
   def create
-    @production = @theater.productions.new(params[:production])
-    @production.play.characters.each do |c|
-      @production.castings.build(:character_id => c.id)
+    @production = @theater.productions.new(params[:production]) 
+    if @production.play
+      @production.play.characters.each do |c|
+        @production.castings.build(:character_id => c.id)
+      end
     end
+    if @production.play_title
+      play = Play.create(:title => @production.play_title)
+      @production.play = play
+    end
+    
     if @production.save
       flash[:notice] = "Successfully created production."
       redirect_to [@theater, @production]

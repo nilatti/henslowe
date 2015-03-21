@@ -1,0 +1,4 @@
+class AddFirstNameAndLastNameToAuthors < ActiveRecord::Migration
+  def change
+  end
+end

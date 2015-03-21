@@ -20,6 +20,10 @@ class PlaysController < ApplicationController
       1.times {act.scenes.build(:scene_number => 1)}
       n +=1
     end
+    if @play.author_first_name && @play.author_last_name
+      author = Author.create(:first_name => @play.author_first_name, :last_name => @play.author_last_name)
+      @play.author = author
+    end
     if @play.save
       flash[:notice] = "Successfully created play."
       redirect_to @play

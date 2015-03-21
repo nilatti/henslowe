@@ -2,15 +2,16 @@
 
 <table class="table-striped">
   <tr>
+    <th>Author</th>
     <th>Title</th>
     <th>Publication Date</th>
-    <th></th><th></th><th></th>
+    <th></th><th></th>
   </tr>
   <% for play in @plays %>
     <tr>
-      <td><%=h play.title %></td>
+      <td><% if play.author %><%= link_to "#{play.author.name}", author_path(play.author) %><% end %></td>
+      <td><%= link_to "#{play.title}", play_path(play) %></td>
       <td><%=h play.date %></td>
-      <td><%= link_to "Show", play %></td>
       <td><%= link_to "Edit", edit_play_path(play) %></td>
       <td><%= link_to "Destroy", play, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
