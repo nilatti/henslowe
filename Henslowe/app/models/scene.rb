@@ -29,7 +29,10 @@ class Scene < ActiveRecord::Base
     actors = []
     for fs in self.french_scenes do 
       fs.actors_called(production).each do |a|
-        actors << a
+        unless actors.include?(a)
+          actors << a
+          actors.sort! {|a, b| a.first_name <=> b.first_name }
+        end
       end
     end
     return actors

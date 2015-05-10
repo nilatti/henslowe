@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150321024501) do
+ActiveRecord::Schema.define(:version => 20150405183545) do
 
   create_table "acts", :force => true do |t|
     t.integer  "act_number"
@@ -170,6 +170,15 @@ ActiveRecord::Schema.define(:version => 20150321024501) do
     t.datetime "updated_at",        :null => false
     t.string   "city"
     t.string   "calendar"
+  end
+
+  create_table "tokens", :force => true do |t|
+    t.string   "access_token"
+    t.string   "refresh_token"
+    t.datetime "expires_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "email"
   end
 
   create_table "users", :force => true do |t|

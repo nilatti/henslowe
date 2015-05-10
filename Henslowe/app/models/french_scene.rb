@@ -50,6 +50,7 @@ class FrenchScene < ActiveRecord::Base
         all_actors << p.user
       end
     end
+    all_actors.sort! {|a,b| a.name <=> b.name }
     return all_actors
   end
 

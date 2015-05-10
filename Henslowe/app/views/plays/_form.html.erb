@@ -1,7 +1,7 @@
 <%= semantic_form_for @play do |f| %>
   <%= f.input :title, :required => true %>
   <%= f.input :date, :as => :date_picker, :hint => "If you don't know the exact date, please set as much as you know and put dummy values, like \'Jan 1\'." %>
-  <%= f.input :author %>
+  <%= f.input :author, :allow_blank => false %>
   <div id='acts'>
   <%= f.semantic_fields_for :acts do |act| %>
   <%= render 'act_fields', :f => act %>

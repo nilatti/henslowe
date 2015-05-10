@@ -37,7 +37,22 @@ class Production < ActiveRecord::Base
   end
 
   def name
-    name = self.play.title + " at " + self.theater.name
+    if self.play 
+      name = self.play.title + " at " + self.theater.name
+    end
+  end
+
+  def french_scenes_possible(date)
+    #date has to be a set that includes available actors
+    possible = []
+    self.play.french_scenes.each do |fs|
+      actors = fs.actors_called(self).to_set
+      if actors.subset? date
+        possible << fs
+      end
+    end
+    possible = possible.uniq
+    possible.sort! {|a,b| a.pretty_name <=> b.pretty_name }
   end
 end
 

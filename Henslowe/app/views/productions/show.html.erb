@@ -14,6 +14,22 @@ Cast list:<br />
 </p>
 
 <p>
+  Actor list:<br />
+  <ol>
+    <% @production.users.actor.uniq.each do |user| %>
+      <li><%= link_to "#{user.name}", user_path(user) %> (<%= user.id %>)-- 
+        <% user.castings.each do |casting| %>
+          <% if casting.production_id == @production.id %>
+            <%= casting.character.name %><% unless casting == user.castings.last %>,<% end %>
+          <% end %>
+        <% end %>
+        <br />
+      </li>
+    <% end %>
+  </ol>
+</p>
+
+<p>
 <%= link_to "Show rehearsals", production_rehearsals_path(@production) %>
   <%= link_to "Schedule rehearsal", new_production_rehearsal_path(@production, @rehearsal) %>
   <%= link_to "Edit", edit_theater_production_path(@theater, @production) %> |

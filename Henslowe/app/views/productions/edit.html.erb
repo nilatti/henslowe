@@ -9,7 +9,7 @@
     <p>Castings<br />
       <% @production.castings.each do |casting| %>
         <%= f.semantic_fields_for :castings, casting do |c| %>
-          <%= c.input :user, :collection => User.actor.uniq, :label => casting.character.name %>
+          <%= c.input :user, :collection => @theater.users.actor.uniq, :label => casting.character.name %>
         <% end %>
       <% end %>
   <p><%= f.actions %></p>

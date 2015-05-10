@@ -12,9 +12,11 @@
       <%=render 'shared/navigation' %>
       <div>
         <% if current_user %>
-          Welcome!  <br />
+          Welcome! <%= current_user.id %>
           <% if current_user.first_name.nil? %>
-            Your profile is incomplete. We don't even know your name! <%= link_to "Click here to build your profile.", edit_user_path(current_user) %>
+            <br />Your profile is incomplete. We don't even know your name! <%= link_to "Click here to build your profile.", edit_user_path(current_user) %>
+          <% else %>
+            <%= current_user.first_name %> <br />
           <% end %>
           <%= link_to "Sign Out", signout_path %>
         <% else %>

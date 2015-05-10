@@ -4,7 +4,7 @@
     <% @production.play.acts.each do |a| %>
        <% a.scenes.each do |s| %>
           <% s.french_scenes.each do |fs| %>
-            <td><%= a.act_number %>.<%= s.scene_number %>.<%= fs.french_scene_number %></td>
+            <td><%= a.act_number %>.<%= s.scene_number %>.<%= fs.french_scene_number %>(<%= fs.id %>)</td>
           <% end %>
         <% end %>
       <% end %>
@@ -27,6 +27,21 @@
 
 <% end %>
 </table>
+
+Cast list by scene:
+<strong>Acts:</strong><br />
+  <ul>
+  <% for act in @production.play.acts %>
+    <li>Act <%= act.act_number %> <br /><ul>
+    <% for scene in act.scenes %>
+      <li><%= act.act_number %>.<%= scene.scene_number %> -- ( <%= scene.id %> )<br /><ul>
+    <% for french_scene in scene.french_scenes %>
+      <li><%= act.act_number %>.<%= scene.scene_number %>.<%= french_scene.french_scene_number %> (<%= french_scene.id %>)<ul><% french_scene.actors_called(@production).each do |actor| %><li><%= link_to "#{actor.name}", actor %>
+      <% end %></ul></li>
+
+      <% end %></ul>
+    <% end %></ul>
+  <% end %></ul>
 </p>
 <p>
 <%= link_to "Back to #{@production.play.title}", theater_production_path %>

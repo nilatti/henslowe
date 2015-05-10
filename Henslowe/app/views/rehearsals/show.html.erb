@@ -9,19 +9,28 @@
 </p>
 <p>
   <strong>To rehearse: </strong>
-  <%= @rehearsal.rehearsal_item.pretty_name %>
+  <% if @rehearsal.rehearsal_item%><%= @rehearsal.rehearsal_item.pretty_name %><% else %>TBD<% end %>
 </p>
 <p>
   <strong>Space:</strong>
-  <%= @rehearsal.space.name %>
+  <% if @rehearsal.space %><%= @rehearsal.space.name %><% else %>TBD<% end %>
 </p>
-<p>
-  <strong>Actors called:</strong><br />
-  
-  <% @actors.each do |a| %>
-    <%= a['displayName'] %> - <%= a['responseStatus'] %><br />
+<p>French Scenes possible:
+ <% actors = Set.new %>
+  <% session[:actors].each do |a| %>
+    <% unless a.empty? %>
+      <% actors << User.find(a) %>
+    <% end %>
   <% end %>
+  <% scenes = @production.french_scenes_possible(actors) %>
+  <ul>
+  <% scenes.each do |fs| %>
+    <li><%= fs.pretty_name %>: <% fs.actors_called(@production).each do |actor| %><%= actor.first_name %>, <% end %></li>
+  <% end %>
+</ul>
 </p>
+
+
 <p>
   <%= link_to "Edit", edit_production_rehearsal_path(@production, @rehearsal) %> |
   <%= link_to "Destroy", [@production, @rehearsal], :confirm => 'Are you sure?', :method => :delete %> |

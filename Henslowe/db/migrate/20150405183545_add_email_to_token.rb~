@@ -1,0 +1,5 @@
+class AddEmailToToken < ActiveRecord::Migration
+  def change
+    add_column :token, :email, :string
+  end
+end

@@ -47,11 +47,11 @@
   <strong>Acts:</strong><br />
   <ul>
   <% for act in @play.acts %>
-    <li><%= act.act_number %><br /><ul>
+    <li>Act <%= act.act_number %> (<%= link_to "Edit", edit_play_act_path(@play, act) %>) -- (<%= act.id %>)<br /><ul>
     <% for scene in act.scenes %>
-      <li><%= act.act_number %>.<%= scene.scene_number %><br /><ul>
+      <li><%= act.act_number %>.<%= scene.scene_number %> -- ( <%= scene.id %> )<br /><ul>
     <% for french_scene in scene.french_scenes %>
-      <li><%= act.act_number %>.<%= scene.scene_number %>.<%= french_scene.french_scene_number %></li>
+      <li><%= act.act_number %>.<%= scene.scene_number %>.<%= french_scene.french_scene_number %> (<%= french_scene.id %>)<ul><% french_scene.characters.each do |character|%><li><%= character.name %><% end %></uL></li>
 
       <% end %></ul>
     <% end %></ul>

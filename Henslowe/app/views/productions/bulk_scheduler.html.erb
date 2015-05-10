@@ -1,0 +1,13 @@
+<% title "Bulk Scheduler" %>
+
+<p>
+	<em>If you generally create a schedule that is pretty much the same, week to week, please use our bulk scheduler to make a whole bunch of rehearsals like BLAMMO. If your schedule tends to vary more, go directly into your Google calendar and create blocks for rehearsal.</em>
+</p>
+
+<%= semantic_form_for [@production, @rehearsal] do |f| %>
+	<% f.inputs :name => 'Weekly schedule' do %>
+		<%= f.input :days, :as => :check_boxes, :collection => [["Sunday", "SU"], ["Monday", "MO"]] %>
+
+	<%= f.submit %>
+	<% end %>
+<% end %>

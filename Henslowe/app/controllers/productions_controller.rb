@@ -12,7 +12,7 @@ before_filter :load_theater
   def doubling
     @production = @theater.productions.find(params[:id])
   end
-  
+
   def new
     @production = @theater.productions.new
   end

@@ -7,19 +7,7 @@ class RehearsalsController < ApplicationController
   
   def show
     @rehearsal = @production.rehearsals.find(params[:id])
-    cal = @rehearsal.production.theater.calendar
-    event = @rehearsal.event_id
 
-    client = Google::APIClient.new
-    client.authorization.access_token = session[:token]
-    service = client.discovered_api('calendar', 'v3')
-    result = client.execute(
-      :api_method => service.events.get, 
-      :parameters => {'calendarId' => cal, 'eventId' => event })
-      
-    @data = result.data
-    @actors = @data['attendees']
-    
   end
   
   def new
@@ -28,37 +16,13 @@ class RehearsalsController < ApplicationController
   end
   
   def create
-    @rehearsal = @production.rehearsals.new(params[:rehearsal])
-      client = Google::APIClient.new
-      client.authorization.access_token = session[:token]
-      service = client.discovered_api('calendar', 'v3')
-      cal = @rehearsal.production.theater.calendar
-      actors = @rehearsal.actors_called(@production)
-      actors.collect! do |a|
-        { :email => a.email }
+      @rehearsal = @production.rehearsals.new(params[:rehearsal])
+     if @rehearsal.space.nil?
+        space_name = "TBD"
+      else
+        space_name = @rehearsal.space.name
       end
-      
-      req = { 
-        'start' => {
-          'dateTime' => @rehearsal.start_time}, 
-        'end' => { 
-          'dateTime' => @rehearsal.end_time},
-        'location' => @rehearsal.space.name,
-        'summary' => "Rehearsal for #{@rehearsal.production.play.title}",
-        'description' => "Rehearse #{@rehearsal.rehearsal_item}",
-        'attendees' => actors
-            }
-    
-      result = client.execute(
-      :api_method => service.events.insert, 
-      :parameters => {'calendarId' => cal },
-      :body => JSON.dump(req), #call search query string here. Why? Search me!
-      :headers => {'Content-Type' => 'application/json'}
-   )
-   data = result.data.to_json
-   
-   @parsed = ActiveSupport::JSON.decode(data)
-   @rehearsal.event_id = @parsed['id']
+      session[:actors] = @rehearsal.actors
     if @rehearsal.save
       
       flash[:notice] = "Successfully created rehearsal."
@@ -75,45 +39,6 @@ class RehearsalsController < ApplicationController
   
   def update
     @rehearsal = @production.rehearsals.find(params[:id])
-    
-      client = Google::APIClient.new
-      client.authorization.access_token = session[:token]
-      service = client.discovered_api('calendar', 'v3')
-      cal = @rehearsal.production.theater.calendar
-      event = @rehearsal.event_id
-      actors = @rehearsal.actors_called(@rehearsal.production)
-      actors.collect! do |a|
-        { :email => a.email }
-      end
-      
-      
-      result = client.execute(
-      :api_method => service.events.get, 
-      :parameters => {'calendarId' => cal, 'eventId' => event })
-      
-      event = result.data
-      
-      event = { 
-        'start' => {
-          'dateTime' => @rehearsal.start_time}, 
-        'end' => { 
-          'dateTime' => @rehearsal.end_time},
-        'location' => @rehearsal.space.name,
-        'summary' => "Rehearsal for #{@rehearsal.production.play.title}",
-        'description' => "Rehearse #{@rehearsal.rehearsal_item}",
-        'sendNotifications' => true,
-        'attendees' => actors
-            }
-      result = client.execute(:api_method => service.events.update, 
-        :parameters => {'calendarId' => cal, 'eventId' => event},
-           :body_object => event,
-           :headers => {'Content-Type' => 'application/json'}
-   )
-   data = result.data.to_json
-   
-   @parsed = ActiveSupport::JSON.decode(data)
-    
-    
     if @rehearsal.update_attributes(params[:rehearsal])
       flash[:notice] = "Successfully updated rehearsal."
       redirect_to [@production, @rehearsal]

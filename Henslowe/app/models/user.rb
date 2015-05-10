@@ -3,53 +3,53 @@ class User < ActiveRecord::Base
 
   default_scope :order => 'is_female, first_name'
 
-has_many :jobs, :dependent => :destroy
-accepts_nested_attributes_for :jobs, :allow_destroy => true
-scope :actor, -> { joins(:niches).where("niches.id = ? or niches.id = ?", 9, 10)} # 9 is actor niche, 10 is auditioner niche. change if niche id changes.
-has_many :niches, :through => :jobs
-has_many :theaters, :through => :jobs
+  has_many :jobs, :dependent => :destroy
+  accepts_nested_attributes_for :jobs, :allow_destroy => true
+  scope :actor, -> { joins(:niches).where("niches.id = ? or niches.id = ?", 9, 10)} # 9 is actor niche, 10 is auditioner niche. change if niche id changes.
+  has_many :niches, :through => :jobs
+  has_many :theaters, :through => :jobs
 
-has_many :castings
-has_many :productions, :through => :jobs
-has_many :theaters, :through => :productions
+  has_many :castings
+  has_many :productions, :through => :jobs
+  has_many :theaters, :through => :productions
 
-def is_actor
-  User.actor.include?(self)
-end
-
-
-def self.create_with_omniauth(auth)
-  create! do |user|
-    user.uid = auth["uid"]
-    #user.first_name = gplus['displayName']
-    user.first_name = auth['info']['givenName']
-    user.uid = auth['uid']
+  def is_actor
+    User.actor.include?(self)
   end
-end
 
-def jobs_for_theater(theater)
-  jobs = []
-  self.jobs.each do |j|
-    jobs << j
+
+  def self.create_with_omniauth(auth)
+    create! do |user|
+      user.uid = auth["uid"]
+      #user.first_name = gplus['displayName']
+      user.first_name = auth['info']['givenName']
+      user.uid = auth['uid']
+    end
   end
-  return jobs
-end
 
-def age
-    birthdate = self.date_of_birth
-	  now = Time.now
-    age = now.year - birthdate.year - (birthdate.to_time.change(:year => now.year) > now ? 1 : 0)
+  def jobs_for_theater(theater)
+    jobs = []
+    self.jobs.each do |j|
+      jobs << j
+    end
+    return jobs
+  end
+
+  def age
+      birthdate = self.date_of_birth
+  	  now = Time.now
+      age = now.year - birthdate.year - (birthdate.to_time.change(:year => now.year) > now ? 1 : 0)
   end	
-  
+    
   def name
-    first_name + " " + last_name
+     first_name + " " + last_name
   end
-  
- 
+    
+   
   def available_for_rehearsal?(rehearsal)
     conflicts = Array.new
     conflicts = Conflict.find(:all, :conditions => ['user_id = ?', self.id])
-    conflicting = Array.new
+     conflicting = Array.new
     conflicts.each do |conflict|
       if rehearsal.start_time < conflict.end_time && conflict.end_time < rehearsal.end_time
         conflicting << conflict
@@ -69,7 +69,7 @@ def age
   def castings_for_production(production)
     cas = Casting.find :all, :conditions => [ 'user_id = ? AND production_id = ?', self.id, production.id ]
   end
-  
+    
     def doubling_problems(production)
     fs = []
     problems = []
@@ -89,5 +89,5 @@ def age
     end
     problems
   end
-
+end
 

@@ -21,3 +21,16 @@ Consider making users only accessible through theaters
 add something that will let me do "save and next" to prepopulate french scenes and do one at a time. Will reduce errors
 
 Ask Myers: Why isn't my_formtastic_changes loading last so it gets precedence?
+
+Make a bunch of rehearsals at once, then populate with possible scenes. Look at caching information to make this faster
+
+Authorization: before calling rails server, do this in the console:
+export CLIENT_ID=371402534497.apps.googleusercontent.com
+export CLIENT_SECRET=80r_jGHNJCfEflc2-hSQlNj5
+
+
+
+put actors available into a set = apr21
+set production = prod
+
+New method: production.french_scenes_possible(date)

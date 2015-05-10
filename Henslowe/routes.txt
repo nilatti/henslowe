@@ -1,0 +1,151 @@
+                         authors GET    /authors(.:format)                                                             authors#index
+                                 POST   /authors(.:format)                                                             authors#create
+                      new_author GET    /authors/new(.:format)                                                         authors#new
+                     edit_author GET    /authors/:id/edit(.:format)                                                    authors#edit
+                          author GET    /authors/:id(.:format)                                                         authors#show
+                                 PUT    /authors/:id(.:format)                                                         authors#update
+                                 DELETE /authors/:id(.:format)                                                         authors#destroy
+                          niches GET    /niches(.:format)                                                              niches#index
+                                 POST   /niches(.:format)                                                              niches#create
+                       new_niche GET    /niches/new(.:format)                                                          niches#new
+                      edit_niche GET    /niches/:id/edit(.:format)                                                     niches#edit
+                           niche GET    /niches/:id(.:format)                                                          niches#show
+                                 PUT    /niches/:id(.:format)                                                          niches#update
+                                 DELETE /niches/:id(.:format)                                                          niches#destroy
+                  theater_spaces GET    /theaters/:theater_id/spaces(.:format)                                         spaces#index
+                                 POST   /theaters/:theater_id/spaces(.:format)                                         spaces#create
+               new_theater_space GET    /theaters/:theater_id/spaces/new(.:format)                                     spaces#new
+              edit_theater_space GET    /theaters/:theater_id/spaces/:id/edit(.:format)                                spaces#edit
+                   theater_space GET    /theaters/:theater_id/spaces/:id(.:format)                                     spaces#show
+                                 PUT    /theaters/:theater_id/spaces/:id(.:format)                                     spaces#update
+                                 DELETE /theaters/:theater_id/spaces/:id(.:format)                                     spaces#destroy
+     doubling_theater_production GET    /theaters/:theater_id/productions/:id/doubling(.:format)                       productions#doubling
+             theater_productions GET    /theaters/:theater_id/productions(.:format)                                    productions#index
+                                 POST   /theaters/:theater_id/productions(.:format)                                    productions#create
+          new_theater_production GET    /theaters/:theater_id/productions/new(.:format)                                productions#new
+         edit_theater_production GET    /theaters/:theater_id/productions/:id/edit(.:format)                           productions#edit
+              theater_production GET    /theaters/:theater_id/productions/:id(.:format)                                productions#show
+                                 PUT    /theaters/:theater_id/productions/:id(.:format)                                productions#update
+                                 DELETE /theaters/:theater_id/productions/:id(.:format)                                productions#destroy
+                   theater_users GET    /theaters/:theater_id/users(.:format)                                          users#index
+                                 POST   /theaters/:theater_id/users(.:format)                                          users#create
+                new_theater_user GET    /theaters/:theater_id/users/new(.:format)                                      users#new
+               edit_theater_user GET    /theaters/:theater_id/users/:id/edit(.:format)                                 users#edit
+                    theater_user GET    /theaters/:theater_id/users/:id(.:format)                                      users#show
+                                 PUT    /theaters/:theater_id/users/:id(.:format)                                      users#update
+                                 DELETE /theaters/:theater_id/users/:id(.:format)                                      users#destroy
+                    theater_jobs GET    /theaters/:theater_id/jobs(.:format)                                           jobs#index
+                                 POST   /theaters/:theater_id/jobs(.:format)                                           jobs#create
+                 new_theater_job GET    /theaters/:theater_id/jobs/new(.:format)                                       jobs#new
+                edit_theater_job GET    /theaters/:theater_id/jobs/:id/edit(.:format)                                  jobs#edit
+                     theater_job GET    /theaters/:theater_id/jobs/:id(.:format)                                       jobs#show
+                                 PUT    /theaters/:theater_id/jobs/:id(.:format)                                       jobs#update
+                                 DELETE /theaters/:theater_id/jobs/:id(.:format)                                       jobs#destroy
+                        theaters GET    /theaters(.:format)                                                            theaters#index
+                                 POST   /theaters(.:format)                                                            theaters#create
+                     new_theater GET    /theaters/new(.:format)                                                        theaters#new
+                    edit_theater GET    /theaters/:id/edit(.:format)                                                   theaters#edit
+                         theater GET    /theaters/:id(.:format)                                                        theaters#show
+                                 PUT    /theaters/:id(.:format)                                                        theaters#update
+                                 DELETE /theaters/:id(.:format)                                                        theaters#destroy
+           production_rehearsals GET    /productions/:production_id/rehearsals(.:format)                               rehearsals#index
+                                 POST   /productions/:production_id/rehearsals(.:format)                               rehearsals#create
+        new_production_rehearsal GET    /productions/:production_id/rehearsals/new(.:format)                           rehearsals#new
+       edit_production_rehearsal GET    /productions/:production_id/rehearsals/:id/edit(.:format)                      rehearsals#edit
+            production_rehearsal GET    /productions/:production_id/rehearsals/:id(.:format)                           rehearsals#show
+                                 PUT    /productions/:production_id/rehearsals/:id(.:format)                           rehearsals#update
+                                 DELETE /productions/:production_id/rehearsals/:id(.:format)                           rehearsals#destroy
+                     productions GET    /productions(.:format)                                                         productions#index
+                                 POST   /productions(.:format)                                                         productions#create
+                  new_production GET    /productions/new(.:format)                                                     productions#new
+                 edit_production GET    /productions/:id/edit(.:format)                                                productions#edit
+                      production GET    /productions/:id(.:format)                                                     productions#show
+                                 PUT    /productions/:id(.:format)                                                     productions#update
+                                 DELETE /productions/:id(.:format)                                                     productions#destroy
+                 play_characters GET    /plays/:play_id/characters(.:format)                                           characters#index
+                                 POST   /plays/:play_id/characters(.:format)                                           characters#create
+              new_play_character GET    /plays/:play_id/characters/new(.:format)                                       characters#new
+             edit_play_character GET    /plays/:play_id/characters/:id/edit(.:format)                                  characters#edit
+                  play_character GET    /plays/:play_id/characters/:id(.:format)                                       characters#show
+                                 PUT    /plays/:play_id/characters/:id(.:format)                                       characters#update
+                                 DELETE /plays/:play_id/characters/:id(.:format)                                       characters#destroy
+    play_act_scene_french_scenes GET    /plays/:play_id/acts/:act_id/scenes/:scene_id/french_scenes(.:format)          french_scenes#index
+                                 POST   /plays/:play_id/acts/:act_id/scenes/:scene_id/french_scenes(.:format)          french_scenes#create
+ new_play_act_scene_french_scene GET    /plays/:play_id/acts/:act_id/scenes/:scene_id/french_scenes/new(.:format)      french_scenes#new
+edit_play_act_scene_french_scene GET    /plays/:play_id/acts/:act_id/scenes/:scene_id/french_scenes/:id/edit(.:format) french_scenes#edit
+     play_act_scene_french_scene GET    /plays/:play_id/acts/:act_id/scenes/:scene_id/french_scenes/:id(.:format)      french_scenes#show
+                                 PUT    /plays/:play_id/acts/:act_id/scenes/:scene_id/french_scenes/:id(.:format)      french_scenes#update
+                                 DELETE /plays/:play_id/acts/:act_id/scenes/:scene_id/french_scenes/:id(.:format)      french_scenes#destroy
+                 play_act_scenes GET    /plays/:play_id/acts/:act_id/scenes(.:format)                                  scenes#index
+                                 POST   /plays/:play_id/acts/:act_id/scenes(.:format)                                  scenes#create
+              new_play_act_scene GET    /plays/:play_id/acts/:act_id/scenes/new(.:format)                              scenes#new
+             edit_play_act_scene GET    /plays/:play_id/acts/:act_id/scenes/:id/edit(.:format)                         scenes#edit
+                  play_act_scene GET    /plays/:play_id/acts/:act_id/scenes/:id(.:format)                              scenes#show
+                                 PUT    /plays/:play_id/acts/:act_id/scenes/:id(.:format)                              scenes#update
+                                 DELETE /plays/:play_id/acts/:act_id/scenes/:id(.:format)                              scenes#destroy
+                       play_acts GET    /plays/:play_id/acts(.:format)                                                 acts#index
+                                 POST   /plays/:play_id/acts(.:format)                                                 acts#create
+                    new_play_act GET    /plays/:play_id/acts/new(.:format)                                             acts#new
+                   edit_play_act GET    /plays/:play_id/acts/:id/edit(.:format)                                        acts#edit
+                        play_act GET    /plays/:play_id/acts/:id(.:format)                                             acts#show
+                                 PUT    /plays/:play_id/acts/:id(.:format)                                             acts#update
+                                 DELETE /plays/:play_id/acts/:id(.:format)                                             acts#destroy
+                           plays GET    /plays(.:format)                                                               plays#index
+                                 POST   /plays(.:format)                                                               plays#create
+                        new_play GET    /plays/new(.:format)                                                           plays#new
+                       edit_play GET    /plays/:id/edit(.:format)                                                      plays#edit
+                            play GET    /plays/:id(.:format)                                                           plays#show
+                                 PUT    /plays/:id(.:format)                                                           plays#update
+                                 DELETE /plays/:id(.:format)                                                           plays#destroy
+                      act_scenes GET    /acts/:act_id/scenes(.:format)                                                 scenes#index
+                                 POST   /acts/:act_id/scenes(.:format)                                                 scenes#create
+                   new_act_scene GET    /acts/:act_id/scenes/new(.:format)                                             scenes#new
+                  edit_act_scene GET    /acts/:act_id/scenes/:id/edit(.:format)                                        scenes#edit
+                       act_scene GET    /acts/:act_id/scenes/:id(.:format)                                             scenes#show
+                                 PUT    /acts/:act_id/scenes/:id(.:format)                                             scenes#update
+                                 DELETE /acts/:act_id/scenes/:id(.:format)                                             scenes#destroy
+               act_french_scenes GET    /acts/:act_id/french_scenes(.:format)                                          french_scenes#index
+                                 POST   /acts/:act_id/french_scenes(.:format)                                          french_scenes#create
+            new_act_french_scene GET    /acts/:act_id/french_scenes/new(.:format)                                      french_scenes#new
+           edit_act_french_scene GET    /acts/:act_id/french_scenes/:id/edit(.:format)                                 french_scenes#edit
+                act_french_scene GET    /acts/:act_id/french_scenes/:id(.:format)                                      french_scenes#show
+                                 PUT    /acts/:act_id/french_scenes/:id(.:format)                                      french_scenes#update
+                                 DELETE /acts/:act_id/french_scenes/:id(.:format)                                      french_scenes#destroy
+                            acts GET    /acts(.:format)                                                                acts#index
+                                 POST   /acts(.:format)                                                                acts#create
+                         new_act GET    /acts/new(.:format)                                                            acts#new
+                        edit_act GET    /acts/:id/edit(.:format)                                                       acts#edit
+                             act GET    /acts/:id(.:format)                                                            acts#show
+                                 PUT    /acts/:id(.:format)                                                            acts#update
+                                 DELETE /acts/:id(.:format)                                                            acts#destroy
+             scene_french_scenes GET    /scenes/:scene_id/french_scenes(.:format)                                      french_scenes#index
+                                 POST   /scenes/:scene_id/french_scenes(.:format)                                      french_scenes#create
+          new_scene_french_scene GET    /scenes/:scene_id/french_scenes/new(.:format)                                  french_scenes#new
+         edit_scene_french_scene GET    /scenes/:scene_id/french_scenes/:id/edit(.:format)                             french_scenes#edit
+              scene_french_scene GET    /scenes/:scene_id/french_scenes/:id(.:format)                                  french_scenes#show
+                                 PUT    /scenes/:scene_id/french_scenes/:id(.:format)                                  french_scenes#update
+                                 DELETE /scenes/:scene_id/french_scenes/:id(.:format)                                  french_scenes#destroy
+                          scenes GET    /scenes(.:format)                                                              scenes#index
+                                 POST   /scenes(.:format)                                                              scenes#create
+                       new_scene GET    /scenes/new(.:format)                                                          scenes#new
+                      edit_scene GET    /scenes/:id/edit(.:format)                                                     scenes#edit
+                           scene GET    /scenes/:id(.:format)                                                          scenes#show
+                                 PUT    /scenes/:id(.:format)                                                          scenes#update
+                                 DELETE /scenes/:id(.:format)                                                          scenes#destroy
+                user_productions GET    /users/:user_id/productions(.:format)                                          productions#index
+                                 POST   /users/:user_id/productions(.:format)                                          productions#create
+             new_user_production GET    /users/:user_id/productions/new(.:format)                                      productions#new
+            edit_user_production GET    /users/:user_id/productions/:id/edit(.:format)                                 productions#edit
+                 user_production GET    /users/:user_id/productions/:id(.:format)                                      productions#show
+                                 PUT    /users/:user_id/productions/:id(.:format)                                      productions#update
+                                 DELETE /users/:user_id/productions/:id(.:format)                                      productions#destroy
+                           users GET    /users(.:format)                                                               users#index
+                                 POST   /users(.:format)                                                               users#create
+                        new_user GET    /users/new(.:format)                                                           users#new
+                       edit_user GET    /users/:id/edit(.:format)                                                      users#edit
+                            user GET    /users/:id(.:format)                                                           users#show
+                                 PUT    /users/:id(.:format)                                                           users#update
+                                 DELETE /users/:id(.:format)                                                           users#destroy
+                            root        /                                                                              theaters#index
+     auth_google_oauth2_callback        /auth/google_oauth2/callback(.:format)                                         sessions#create
+                         signout        /signout(.:format)                                                             sessions#destroy

@@ -1,17 +1,18 @@
 <% title "Rehearsals" %>
 
-<table>
+<table class="table-striped">
   <tr>
     <th>Start Time</th>
     <th>End Time</th>
+    <th>To Rehearse</th>
     <th>Space</th>
   </tr>
   <% for rehearsal in @rehearsals %>
     <tr>
       <td><%= rehearsal.start_time %></td>
       <td><%= rehearsal.end_time %></td>
-      <td><%= rehearsal.rehearsal_item.pretty_name %>
-      <td><%= rehearsal.space.name %></td>
+      <td><% if rehearsal.rehearsal_item %><%= rehearsal.rehearsal_item.pretty_name %><% else %>TBD<% end %></td>
+      <td><% if rehearsal.space %><%= rehearsal.space.name %><% else %>TBD<% end %></td>
       <td><%= link_to "Show", production_rehearsal_path(@production, rehearsal) %></td>
       <td><%= link_to "Edit", edit_production_rehearsal_path(@production, rehearsal) %></td>
       <td><%= link_to "Destroy", [@production, rehearsal], :confirm => 'Are you sure?', :method => :delete %></td>
